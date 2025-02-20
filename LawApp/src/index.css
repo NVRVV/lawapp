@@ -1,0 +1,17 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+body{
+    font-family: 'Times New Roman', Times, serif;
+}
+@theme{
+    --bg-color: #ffffff ;
+    --primary-color: #A37E2C ;
+    --secondary-color: #006039 ;
+    --bg1: #9ECA9E ;
+    --bg2: #C9C08F ;
+
+
+}
+
