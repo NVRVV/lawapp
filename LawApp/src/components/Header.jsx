@@ -5,7 +5,7 @@ import pro from '../assets/profile-icon-b.png'
 const Header = () => {
   return (
     <>
-      <header>
+      <header className='fixed w-full'>
         <div className="flex flex-col md:flex-row">
             <div className="flex flex-1 flex-col mt-5 ml-10">
                 <h1 className="text-5xl font-bold">SLMB</h1>
