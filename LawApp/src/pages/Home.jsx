@@ -40,12 +40,13 @@ const Home = () => {
           </p>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row bg-bg p-10 pt-20 pb-20 ">
-        <div className="flex ml-20 mr-20">
-        <h1 className='text-6xl underline '>Schedule a free case evolution</h1>
+      <div className="flex flex-col md:flex-row bg-bg p-10 pt-15 pb-15 items-center justify-center">
+        <div className="flex ml-15 mr-15 w-250">
+        <h1 className='text-5xl underline '>Schedule a free case evolution</h1>
         </div>
-        <div className="flex">
-            <p>The platform leverages an intelligent matching algorithm to seamlessly connect clients with the most suitable lawyers based on expertise, availability, and location, ensuring an efficient and streamlined legal consultation process.</p>
+        <div className="flex flex-row md:flex-col ">
+            <p className='pb-7 pt-3'>The platform leverages an intelligent matching algorithm to seamlessly connect clients with the most suitable lawyers based on expertise, availability, and location, ensuring an efficient and streamlined legal consultation process.</p>
+            <button className="text-2xl bg-black text-white font-bold py-2 px-4 rounded w-80 cursor-pointer hover:shadow-xl">Lets talk - Send a message</button>
         </div>
         
       </div>

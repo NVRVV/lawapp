@@ -8,7 +8,7 @@ import Header from './components/Header';
 
 import Home from './pages/Home';
 
-
+import Popup from './pages/Popup';
 const App = () => {
   return (
     
@@ -19,6 +19,9 @@ const App = () => {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Register/>}></Route>
         <Route path='/' element={<Home/>}></Route>
+        <Route path='/' element={<Popup/>}></Route>
+        
+
         </Routes>
         
       </div>
