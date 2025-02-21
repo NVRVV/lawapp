@@ -118,6 +118,7 @@ input[type="radio"]:checked + span {
 }
 
 
+<<<<<<< HEAD
 .hero{
   align-items: center;
   justify-content: center;
@@ -145,3 +146,12 @@ input[type="radio"]:checked + span {
 .hero img{
   align-content: center;
 }
+=======
+.popup-overlay {
+  background-color: rgba(128, 128, 128, 0.3); /* Gray color with 10% opacity */
+  width: 800px;
+  height: 500px;
+  padding: 16px;
+  text-align: center;
+}
+>>>>>>> da7657bf82e41f0fae32f24c29b4b83b36471012
