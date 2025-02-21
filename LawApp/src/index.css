@@ -1,13 +1,116 @@
 @import "tailwindcss";
 
-body{
-    font-family: 'times new roman', sans-serif;
+body {
+    font-family: 'Times New Roman', sans-serif;
 }
 
-@theme{
-  --bg: #ffffff;
-  --primary: #A37E2C;
-  --secondary: #006039;
-  --bg1: #9ECA9E;
-  --bg2: #C9C08F;
+/* Theme Variables */
+@theme {
+  --color-bg: #ffffff;
+  --color-primary: #A37E2C;
+  --color-secondary: #006039;
+  --color-bg1: #9ECA9E;
+  --color-bg2: #C9C08F;
+}
+
+/* Default Background */
+.login-section {
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.5s ease-in-out;
+}
+
+/* Default Client Mode */
+.left-section {
+  animation: fadeInLeft 0.5s ease-in-out;
+}
+
+/* When Lawyer is selected */
+.lawyer-selected .left-section {
+  text-align: right;
+  align-items: end;
+  padding-right: 2rem;
+  animation: fadeInRight 0.5s ease-in-out;
+}
+
+.lawyer-selected .login {
+  border-radius: 0px 100px 100px 0px;
+  animation: fadeInLeft 0.5s ease-in-out;
+  border: none;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Default Login Box */
+.login {
+  border-radius: 100px 0px 0px 100px;
+  transition: border-radius 0.5s ease-in-out;
+}
+
+/* Form Fields */
+.login-input {
+  background: #f9f9f9;
+  height: 50px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  border: none;
+}
+
+.login-btn {
+  background: var(--color-bg1);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.login-btn:hover {
+  background: var(--color-secondary);
+  color: white;
+}
+
+/* Radio Buttons */
+.radio-box {
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  border: none;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Hide default radio buttons */
+input[type="radio"] {
+  display: none;
+}
+
+/* Apply box-shadow when the radio input is selected */
+input[type="radio"]:checked + span {
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+  border: none;
+  background: var(--color-bg1);
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
