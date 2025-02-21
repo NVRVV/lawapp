@@ -8,12 +8,10 @@ import hero from '../assets/hero.png'
 const Home = () => {
   return (
 
-    <section className='bg-bg2 flex flex-col justify-center'> 
+    <section className='bg-bg2 flex flex-col justify-center'>
         <div>
             <img src={hero} alt="" />
         </div>
-
-    <section className='bg-bg2 flex flex-col justify-center'>
 
       <div className="flex flex-row md:flex-col items-center justify-center mb-10">
         <h1 className='text-6xl'>How it works</h1>        
