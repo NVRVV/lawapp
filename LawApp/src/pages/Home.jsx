@@ -6,7 +6,7 @@ import hiw3 from '../assets/hiw-3.png';
 
 const Home = () => {
   return (
-    <section className='bg-bg2 h-screen flex flex-col justify-center'>
+    <section className='bg-bg2 flex flex-col justify-center'>
       <div className="flex flex-row md:flex-col items-center justify-center mb-10">
         <h1 className='text-6xl'>How it works</h1>        
       </div>
@@ -40,13 +40,14 @@ const Home = () => {
           </p>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row bg-bg items-center justify-center">
-        <div className="flex ">
-        <h1 className='text-7xl'>Schedule a free case evolution</h1>
+      <div className="flex flex-col md:flex-row bg-bg p-10 pt-20 pb-20 ">
+        <div className="flex ml-20 mr-20">
+        <h1 className='text-6xl underline '>Schedule a free case evolution</h1>
         </div>
         <div className="flex">
             <p>The platform leverages an intelligent matching algorithm to seamlessly connect clients with the most suitable lawyers based on expertise, availability, and location, ensuring an efficient and streamlined legal consultation process.</p>
         </div>
+        
       </div>
     </section>
   );
