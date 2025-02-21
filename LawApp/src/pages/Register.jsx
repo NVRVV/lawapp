@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "../index.css";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Register = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [isLawyerSelected, setIsLawyerSelected] = useState(false);
   const navigate = useNavigate();
@@ -30,20 +30,21 @@ const Login = () => {
         </div>
 
         {/* Right Section */}
-        <div className="login flex flex-8 text-black bg-bg h-screen w-max items-center justify-center">
-          <div className="flex-col ml-10">
-            <h1 className="text-5xl ml-35 mr-35 font-bold">Login</h1>
-            <p className="text-xl ml-15 mr-15 mt-5">
-              Want to Sign Up?{" "}
+        <div className="login flex flex-10  text-black bg-bg h-screen w-max items-center justify-center">
+          <div className="flex-col ml-15 mr-15">
+            <h1 className="text-4xl ml-25 mr-25 font-bold ">Create a Account</h1>
+            <p className="text-xl ml-35 mr-35 mt-5">
+              Already register{" "}
               <span 
-                className="text-secondary cursor-pointer" 
-                onClick={() => navigate("/register")}>
-                Create Account
+              className="text-secondary cursor-pointer"
+              onClick={() => navigate('/login') }
+              >
+                Login
               </span>
             </p>
 
             {/* Radio Buttons */}
-            <div className="flex flex-row ml-10 mr-10 p-5 gap-x-5">
+            <div className="flex flex-row ml-25 mr-25 p-2 gap-x-5">
               <label className="radio-box">
                 <input
                   type="radio"
@@ -69,10 +70,49 @@ const Login = () => {
 
             {/* Login Form */}
             <form className="flex flex-col">
-              <div className="flex flex-col">
+              <div className="flex flex-row gap-x-10">
+                <div className="flex flex-col  ">
+                <label 
+                  htmlFor="First Name"
+                  className={` transition-opacity duration-300 ${
+                    isFocused ? "opacity-100" : "opacity-0"
+                  }`}>
+                    First Name
+                </label>
+                <input 
+                  type="text" 
+                  id="first"
+                  placeholder="First Name"
+                  className="login-input p-2 mt-2 pl-5 focus:outline-none"
+                  onFocus={() => setIsFocused(true)}
+                  onBlur={() => setIsFocused(false)}
+                  required
+                 />
+                </div>
+                <div className="flex flex-col">
+                <label 
+                  htmlFor="Last Name"
+                  className={` transition-opacity duration-300 ${
+                    isFocused ? "opacity-100" : "opacity-0"
+                  }`}>
+                    Last Name
+                </label>
+                <input 
+                  type="text" 
+                  id="first"
+                  placeholder="Last Name"
+                  className="login-input p-2 mt-2 pl-5 focus:outline-none"
+                  onFocus={() => setIsFocused(true)}
+                  onBlur={() => setIsFocused(false)}
+                  required
+                 />
+                </div>
+              </div>
+
+              <div className="flex flex-col mt-4">
                 <label
                   htmlFor="email"
-                  className={`text-xl transition-opacity duration-300 ${
+                  className={` transition-opacity duration-300 ${
                     isFocused ? "opacity-100" : "opacity-0"
                   }`}
                 >
@@ -92,7 +132,7 @@ const Login = () => {
               <div className="flex flex-col">
                 <label
                   htmlFor="password"
-                  className={`text-xl mt-5 transition-opacity duration-300 ${
+                  className={`text-ls mt-5 transition-opacity duration-300 ${
                     isFocused ? "opacity-100" : "opacity-0"
                   }`}
                 >
@@ -111,7 +151,7 @@ const Login = () => {
 
               <p className="text-sm mt-5">
                 <input
-                  className="mr-2 mt-5 mb-5 cursor-pointer"
+                  className="mr-2 cursor-pointer"
                   type="checkbox"
                   name="terms"
                   id="terms"
@@ -132,4 +172,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

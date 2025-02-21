@@ -37,6 +37,8 @@ body {
   border-radius: 0px 100px 100px 0px;
   animation: fadeInLeft 0.5s ease-in-out;
   border: none;
+  padding-right: 30px;
+  align-items: center;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -49,7 +51,7 @@ body {
 /* Form Fields */
 .login-input {
   background: #f9f9f9;
-  height: 50px;
+  height: 40px;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 2px;
   border: none;
