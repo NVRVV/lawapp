@@ -5,7 +5,6 @@ import Register from './pages/Register';
 import Home from './pages/Home';
 import Header1 from './components/Header1';
 
-import Popup from './pages/Popup';
 const App = () => {
   return (
     
@@ -13,13 +12,7 @@ const App = () => {
       <div>
         <Routes>
         <Route path='/login' element={<Login />}></Route>
-        <Route path='/register' element={<Register/>}></Route>
-
-
-        <Route path='/' element={<Popup/>}></Route>
-        
-
-
+        <Route path='/register' element={<Register/>}></Route>     
         <Route path='/' element={<><Header1/><Home/></>}></Route>
         </Routes>
         
