@@ -116,3 +116,12 @@ input[type="radio"]:checked + span {
     transform: translateX(0);
   }
 }
+
+
+.popup-overlay {
+  background-color: rgba(128, 128, 128, 0.3); /* Gray color with 10% opacity */
+  width: 800px;
+  height: 500px;
+  padding: 16px;
+  text-align: center;
+}
