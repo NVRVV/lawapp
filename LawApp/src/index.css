@@ -116,3 +116,32 @@ input[type="radio"]:checked + span {
     transform: translateX(0);
   }
 }
+
+
+.hero{
+  align-items: center;
+  justify-content: center;
+}
+
+.hero h2{
+  text-align: center;
+  color: white;
+  margin-top: 12%;
+}
+
+.hero button{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-left: 42.5%;
+  margin-right: 42.5%;
+  margin-top: 15%;
+  height: 50px;
+  width: 200px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.hero img{
+  align-content: center;
+}

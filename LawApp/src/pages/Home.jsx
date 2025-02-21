@@ -3,19 +3,22 @@ import '../index.css';
 import hiw1 from '../assets/hiw-1.png';
 import hiw2 from '../assets/hiw-2.png';
 import hiw3 from '../assets/hiw-3.png';
-import hero from '../assets/hero.png'
-import { FaArrowRight } from "react-icons/fa";
+import Header1 from '../components/Header1';
+import AR from '../assets/Arrow-right.png';
 
 const Home = () => {
   return (
 
-    <section className='bg-bg2 flex flex-col justify-center'>
-        <div>
-            <img src={hero} alt="" className='w-full' />
-            <button className=''>Get Started <FaArrowRight/></button>
+    <section className='bg-bg2 flex flex-col'>
+        <div className=' hero w-full h-160' style={{ backgroundImage: "url('/src/assets/hero.png')" }}>
+            <Header1/>
+            <h2 className='text-4xl'>Welcome!</h2>
+            <button className="text-white bg-secondary text-2xl flex items-center gap-2 px-4 py-2">
+              Get Started <img src={AR} alt="" className="w-6 h-6 inline-block" />
+            </button>
         </div>
 
-      <div className="flex flex-row md:flex-col items-center justify-center mb-10">
+      <div className="flex flex-row md:flex-col items-center justify-center mt-10 mb-15">
         <h1 className='text-6xl'>How it works</h1>        
       </div>
 
