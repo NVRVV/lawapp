@@ -4,13 +4,15 @@ import hiw1 from '../assets/hiw-1.png';
 import hiw2 from '../assets/hiw-2.png';
 import hiw3 from '../assets/hiw-3.png';
 import hero from '../assets/hero.png'
+import { FaArrowRight } from "react-icons/fa";
 
 const Home = () => {
   return (
 
     <section className='bg-bg2 flex flex-col justify-center'>
         <div>
-            <img src={hero} alt="" />
+            <img src={hero} alt="" className='w-full' />
+            <button className=''>Get Started <FaArrowRight/></button>
         </div>
 
       <div className="flex flex-row md:flex-col items-center justify-center mb-10">
