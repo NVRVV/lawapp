@@ -19,6 +19,7 @@ import ClientDash from './pages/ClientDash';
 
 import LawyerForm1 from './pages/LawyersForm/LawyerForm1';
 import LawyerForm2 from './pages/LawyersForm/LawyerForm2';
+import Popupsection from './pages/Popupsection';
 
 
 const App = () => {
@@ -29,7 +30,8 @@ const App = () => {
       <div>
         <Routes>
         <Route path='/login' element={<Login />}></Route>
-        <Route path='/register' element={<Register/>}></Route> 
+        <Route path='/register' element={<Register/>}></Route>
+        <Route path='/popup' element={<Popupsection/>}></Route>
         <Route path='/form' element={<FormScreen/>}></Route>
         <Route path='/upload' element={<UploadScreen setUploadedFiles={setUploadedFiles} uploadedFiles={uploadedFiles}/>}></Route>
         <Route path='/review' element={<ReviewScreen uploadedFiles={uploadedFiles} setUploadedFiles={setUploadedFiles}/>}></Route>

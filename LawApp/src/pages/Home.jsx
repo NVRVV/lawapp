@@ -5,15 +5,19 @@ import hiw2 from '../assets/hiw-2.png';
 import hiw3 from '../assets/hiw-3.png';
 import Header1 from '../components/Header1';
 import AR from '../assets/Arrow-right.png';
+import { useActionData, useNavigate } from 'react-router-dom';
 
 const Home = () => {
-  return (
 
+  const navigate = useNavigate();
+
+  return (
     <section className='bg-bg2 flex flex-col'>
         <div className=' hero w-full h-160 bg-cover bg-center' style={{ backgroundImage: "url('/src/assets/hero.png')" }}>
             <Header1/>
             <h2 className='text-4xl'>Welcome!</h2>
-            <button className="text-white bg-secondary text-2xl flex items-center gap-2 px-4 py-2">
+            <button className="text-white bg-secondary text-2xl flex items-center gap-2 px-4 py-2"
+            onClick={() => navigate('/filter')}>
               Get Started <img src={AR} alt="" className="w-6 h-6 inline-block" />
             </button>
         </div>
@@ -57,7 +61,8 @@ const Home = () => {
         </div>
         <div className="flex flex-row md:flex-col ">
             <p className='pb-7 pt-3'>The platform leverages an intelligent matching algorithm to seamlessly connect clients with the most suitable lawyers based on expertise, availability, and location, ensuring an efficient and streamlined legal consultation process.</p>
-            <button className="text-2xl bg-black text-white font-bold py-2 px-4 rounded w-80 cursor-pointer hover:shadow-xl">Lets talk - Send a message</button>
+            <button className="text-2xl bg-black text-white font-bold py-2 px-4 rounded w-80 cursor-pointer hover:shadow-xl"
+            onClick={() => ('/popup')}>Lets talk - Send a message</button>
         </div>
         
       </div>

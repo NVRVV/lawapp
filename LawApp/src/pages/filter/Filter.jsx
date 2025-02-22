@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import Header2 from '../../components/Header2';
 import FilterSection from './FilterSection';
 import FeedCard from './FeedCard';
+import { useNavigate } from 'react-router-dom';
 
 const Filter = () => {
+
+  const navigate = useNavigate();
+
   const initialFeedData = [
     { name: "Advocate Name", category: 'Criminal', rating: '2', experience: '5 years', location: "Location", fee: 10000, successRate: 95 },
     { name: "Advocate Name", category: 'Civil', rating: '4', experience: '6 years', location: "Location", fee: 15000, successRate: 90 },
@@ -54,7 +58,8 @@ const Filter = () => {
     <>
       <section className='w-full h-full bg-cover bg-center' style={{ backgroundImage: "url('/src/assets/filter-hero.jpg')" }}>
         <Header2 />
-      
+        <button className='p-2 pl-5 pr-5 bg-bg1 justify-end items-end ml-300 text-2xl'
+        onClick={() => navigate('/form')}>Upload</button>
         <div className="container mx-auto p-6 flex gap-6">
           {/* Filter Section (Left) */}
           <FilterSection onFilterChange={handleFilterChange} filters={filters} />

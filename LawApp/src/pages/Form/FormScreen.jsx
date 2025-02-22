@@ -8,11 +8,10 @@ import { CiLocationOn } from "react-icons/ci";
 const FormScreen = () => {
   const navigate = useNavigate();
     return(
-        <section>
+        <section style={{ backgroundImage: `url(${form1})` }}>
             <Header1/>
             <div
                   className="flex flex-col items-center justify-center h-173 w-full bg-cover bg-center pt-20"
-                  style={{ backgroundImage: `url(${form1})` }}
                 >
                   <div className="screens  flex-row md:flex-col ml-100 mr-100 rounded-xl">
                     <h1 className="text-6xl text-black ">Case Details</h1>
@@ -59,7 +58,8 @@ const FormScreen = () => {
                     </span>
                     </p>
                     
-                    <button className="p-3  mt-3 w-[248px] h-[51px] bg-secondary text-white text-xl rounded-xl hover:shadow-xl cursor-pointer">SUBMIT</button>
+                    <button className="p-3  mt-3 w-[248px] h-[51px] bg-secondary text-white text-xl rounded-xl hover:shadow-xl cursor-pointer"
+                    onClick={() => navigate('/filter')}>SUBMIT</button>
                     </div>
                     
                   </div>

@@ -25,11 +25,10 @@ const ReviewScreen = ({ uploadedFiles = [], setUploadedFiles = () => {} }) => {
     };
 
     return (
-        <section>
+        <section style={{ backgroundImage: `url(${form1})` }}>
             <Header1 />
             <div
                 className="flex flex-col items-center justify-center h-173 w-full bg-cover bg-center pt-20"
-                style={{ backgroundImage: `url(${form1})` }}
             >
                 <div className="screens2 flex-row md:flex-col ml-100 mr-100 rounded-lg items-center justify-center">
                     {uploadedFiles.length > 0 ? (

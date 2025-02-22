@@ -21,7 +21,7 @@ const LawyerForm2 = () => {
         </div>
         <div className='flex flex-col md:flex-row gap-105 ml-10 mt-10'>
           <button className='bg-secondary p-3 w-30 rounded-sm text-white cursor-pointer text-xl'onClick={()=>navigate('/lawyer-next')}>Previous</button>
-          <button className='bg-secondary p-3 w-30 rounded-sm text-white cursor-pointer text-xl' onClick={()=>navigate('/filter')}>Submit</button>
+          <button className='bg-secondary p-3 w-30 rounded-sm text-white cursor-pointer text-xl' onClick={()=>navigate('/lawyer-dashboard')}>Submit</button>
         </div>
 
       </div>

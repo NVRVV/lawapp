@@ -8,6 +8,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   return (
+
     <section
       style={{
         backgroundImage: isLawyerSelected
@@ -25,7 +26,8 @@ const Login = () => {
       >
         {/* Left Section */}
         <div className="flex flex-10 text-white h-max left-section flex-col ml-10">
-          <h1 className="text-5xl mt-5 font-bold">SLMB</h1>
+          <h1 className="text-5xl mt-5 font-bold cursor-pointer"
+          onClick={() => navigate('/')}>SLMB</h1>
           <p className="text-xl font-medium mt-5">Your trusted legal partner</p>
         </div>
 
@@ -121,7 +123,8 @@ const Login = () => {
                 <span className="text-secondary"> Terms & Conditions</span>
               </p>
 
-              <button className="login-btn text-2xl p-2 mt-5 cursor-pointer">
+              <button className="login-btn text-2xl p-2 mt-5 cursor-pointer"
+              onClick={() => navigate('/user-profile')}>
                 Login
               </button>
             </form>

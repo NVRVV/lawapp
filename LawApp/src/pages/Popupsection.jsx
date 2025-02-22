@@ -2,7 +2,7 @@ import React from "react";
 import "../index.css";
 import pop1 from "../assets/pop1.png";
 
-const Popup = () => {
+const Popupsection = () => {
   return (
     <section
       className="flex flex-col items-center justify-center h-173 w-full bg-cover bg-center"
@@ -34,4 +34,4 @@ const Popup = () => {
   );
 }
 
-export default Popup;
+export default Popupsection;

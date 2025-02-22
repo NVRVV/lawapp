@@ -9,9 +9,9 @@ const LawyerForm = () => {
       <Header2 />
       <div className="lawyer1 flex-row md:flex-col ml-92 mr-92 rounded-xl mt-15">
       <h1 className='text-left text-3xl ml-10 mt-10 text-secondary'>Welcome!</h1>
-        <div className="flex flex-row md:flex-col ml-10 mt-7">
+        <div className="flex-1 flex-row md:flex-col ml-10 mt-7">
             <h2 className='text-left text-2xl '>Username</h2>
-            <input type="number" placeholder="Enter your username" className="login-input text-xl p-7  mt-3 mr-14 pl-5 w-[631px] h-[204px] focus:outline-none "   min="0" step="10" pattern="\d+" 
+            <input type="text" placeholder="Enter your username" className="login-input text-xl p-7  mt-3 mr-14 pl-5 w-[631px] h-[204px] focus:outline-none "   min="0" step="10" pattern="\d+" 
             onInput={(e) => {e.target.value = e.target.value.replace(/[^0-9]/g, '');}}/> 
         </div>
         <div className="flex flex-row md:flex-col ml-10 mt-5">
