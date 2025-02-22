@@ -125,3 +125,27 @@ input[type="radio"]:checked + span {
   padding: 16px;
   text-align: center;
 }
+
+.screens {
+  background-color: rgba(255, 255, 255, 0.6); /* Gray color with 10% opacity */
+  width: 1100px;
+  height: 550px;
+  padding: 16px;
+  text-align: center;
+}
+
+.screens1{
+  background-color: rgba(255, 255, 255, 0.6); /* Gray color with 10% opacity */
+  width: 705px;
+  height: 451px;
+  padding: 16px;
+  text-align: center;
+}
+
+.screens2 {
+  background-color: rgba(255, 255, 255, 0.6); /* Gray color with 10% opacity */
+  width: 1100px;
+  height: 500px;
+  padding: 16px;
+  text-align: center;
+}
