@@ -178,3 +178,10 @@ input[type="radio"]:checked + span {
   text-align: center;
 }
 
+.lawyer1 {
+  background-color: rgba(255, 255, 255, 0.6); /* Gray color with 10% opacity */
+  width: 800;
+  height: 500px;
+  padding: 16px;
+  text-align: center;
+}

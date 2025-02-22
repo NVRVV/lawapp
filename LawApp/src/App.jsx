@@ -6,12 +6,14 @@ import Home from './pages/Home';
 
 
 import Filter from './pages/filter/Filter';
-import LawyerForm from './pages/LawyerForm';
+import LawyerForm from './pages/LawyersForm/LawyerForm';
 
 import Header1 from './components/Header1';
 import FormScreen from './pages/Form/FormScreen';
 import UploadScreen from './pages/Form/UploadScreen';
 import ReviewScreen from './pages/Form/ReviewScreen';
+import LawyerForm1 from './pages/LawyersForm/LawyerForm1';
+import LawyerForm2 from './pages/LawyersForm/LawyerForm2';
 
 const App = () => {
   const [uploadedFiles, setUploadedFiles] = useState([]);
@@ -32,6 +34,8 @@ const App = () => {
 
         <Route path='/filter' element={<Filter/>}></Route> 
         <Route path='/lawyer-form' element={<LawyerForm/>}></Route>
+        <Route path='/lawyer-next' element={<LawyerForm1/>}></Route>
+        <Route path='/lawyer-form-next' element={<LawyerForm2/>}></Route>
         </Routes>
         
       </div>
