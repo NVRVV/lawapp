@@ -11,15 +11,15 @@ import LawyerForm from './pages/LawyersForm/LawyerForm';
 import FormScreen from './pages/Form/FormScreen';
 import UploadScreen from './pages/Form/UploadScreen';
 import ReviewScreen from './pages/Form/ReviewScreen';
-<<<<<<< HEAD
+
 import LawyerDash from './pages/LawyerDash/LawyerDash';
 import ClientsLawyer from './pages/LawyerDash/ClientsLawyer';
 import Settting from './pages/LawyerDash/Settting';
 import ClientDash from './pages/ClientDash';
-=======
+
 import LawyerForm1 from './pages/LawyersForm/LawyerForm1';
 import LawyerForm2 from './pages/LawyersForm/LawyerForm2';
->>>>>>> dd0ca269005b9441a3183c0944ea5672d1eff4a7
+
 
 const App = () => {
   const [uploadedFiles, setUploadedFiles] = useState([]);
@@ -29,8 +29,7 @@ const App = () => {
       <div>
         <Routes>
         <Route path='/login' element={<Login />}></Route>
-        <Route path='/register' element={<Register/>}></Route>
-        <Route path='/register' element={<Register/>}></Route>   
+        <Route path='/register' element={<Register/>}></Route> 
         <Route path='/form' element={<FormScreen/>}></Route>
         <Route path='/upload' element={<UploadScreen setUploadedFiles={setUploadedFiles} uploadedFiles={uploadedFiles}/>}></Route>
         <Route path='/review' element={<ReviewScreen uploadedFiles={uploadedFiles} setUploadedFiles={setUploadedFiles}/>}></Route>
