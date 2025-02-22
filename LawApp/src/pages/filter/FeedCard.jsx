@@ -9,7 +9,7 @@ import star from '../../assets/star.png';
 const FeedCard = ({ name, category, rating, experience, location, fee, successRate }) => {
   return (
     <div className="bg-white p-4 rounded-lg mt-5 shadow-md mb-5">
-      <div className="flex items-start mb-3">
+        <div className="flex items-start mb-3">
          <FaUserTie className="w-10 h-10 mr-5" /> {/* Added margin-right for spacing */}
         <div className="flex flex-col"> {/* Wrap name and category in a flex column */}
             <h3 className="font-semibold">{name}</h3>

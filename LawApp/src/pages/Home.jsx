@@ -10,7 +10,7 @@ const Home = () => {
   return (
 
     <section className='bg-bg2 flex flex-col'>
-        <div className=' hero w-full h-160' style={{ backgroundImage: "url('/src/assets/hero.png')" }}>
+        <div className=' hero w-full h-160 bg-cover bg-center' style={{ backgroundImage: "url('/src/assets/hero.png')" }}>
             <Header1/>
             <h2 className='text-4xl'>Welcome!</h2>
             <button className="text-white bg-secondary text-2xl flex items-center gap-2 px-4 py-2">

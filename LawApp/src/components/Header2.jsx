@@ -13,7 +13,7 @@ const Header2 = () => {
             </div>
             <div className="flex items-center justify-center">
                <img src={filter} alt="" className='cursor-pointer w-10 h-10 ml-5 mr-5 ' />
-               <img src={pro} alt="" className='cursor-pointer w-10 h-10 ml-5 mr-10'/>
+               <img src={pro} alt="" className='cursor-pointer w-10 h-10 ml-5'/>
                <h1 className='text-3xl mr-5  cursor-pointer'>Login</h1>
             </div>
            </div>
