@@ -154,3 +154,34 @@ input[type="radio"]:checked + span {
   padding: 16px;
   text-align: center;
 }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+.screens {
+  background-color: rgba(255, 255, 255, 0.6); /* Gray color with 10% opacity */
+  width: 1100px;
+  height: 550px;
+  padding: 16px;
+  text-align: center;
+}
+
+.screens1{
+  background-color: rgba(255, 255, 255, 0.6); /* Gray color with 10% opacity */
+  width: 705px;
+  height: 451px;
+  padding: 16px;
+  text-align: center;
+}
+
+.screens2 {
+  background-color: rgba(255, 255, 255, 0.6); /* Gray color with 10% opacity */
+  width: 1100px;
+  height: 500px;
+  padding: 16px;
+  text-align: center;
+}
+=======
+>>>>>>> da7657bf82e41f0fae32f24c29b4b83b36471012
+>>>>>>> f1cbf40a2a60ff05761ca62bf51200f8027afbc8
+>>>>>>> 0270b62a0526dece896e15469f20f8c9ee028647

@@ -32,6 +32,6 @@ const Popup = () => {
       </div>
     </section>
   );
-};
+}
 
 export default Popup;
