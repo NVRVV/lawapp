@@ -6,15 +6,20 @@ import Home from './pages/Home';
 
 
 import Filter from './pages/filter/Filter';
-import LawyerForm from './pages/LawyerForm';
+import LawyerForm from './pages/LawyersForm/LawyerForm';
 
 import FormScreen from './pages/Form/FormScreen';
 import UploadScreen from './pages/Form/UploadScreen';
 import ReviewScreen from './pages/Form/ReviewScreen';
+<<<<<<< HEAD
 import LawyerDash from './pages/LawyerDash/LawyerDash';
 import ClientsLawyer from './pages/LawyerDash/ClientsLawyer';
 import Settting from './pages/LawyerDash/Settting';
 import ClientDash from './pages/ClientDash';
+=======
+import LawyerForm1 from './pages/LawyersForm/LawyerForm1';
+import LawyerForm2 from './pages/LawyersForm/LawyerForm2';
+>>>>>>> dd0ca269005b9441a3183c0944ea5672d1eff4a7
 
 const App = () => {
   const [uploadedFiles, setUploadedFiles] = useState([]);
@@ -38,6 +43,8 @@ const App = () => {
 
         <Route path='/filter' element={<Filter/>}></Route> 
         <Route path='/lawyer-form' element={<LawyerForm/>}></Route>
+        <Route path='/lawyer-next' element={<LawyerForm1/>}></Route>
+        <Route path='/lawyer-form-next' element={<LawyerForm2/>}></Route>
         </Routes>
         
       </div>
