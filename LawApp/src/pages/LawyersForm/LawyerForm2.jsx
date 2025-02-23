@@ -5,8 +5,8 @@ import Header2 from '../../components/Header2';
 const LawyerForm2 = () => {
     const navigate = useNavigate();
   return (
-    <section className="bg-bg2 min-h-screen flex flex-col items-center px-5 md:px-10 lg:px-20">
-      <div className="bg-white shadow-lg rounded-xl p-5 w-full max-w-lg md:max-w-2xl lg:max-w-4xl mt-10">
+    <section className="bg-bg2 min-h-screen flex flex-col items-center  px-5 md:px-10 lg:px-20">
+      <div className="bg-white shadow-lg rounded-xl p-5 w-full max-w-lg  md:max-w-2xl lg:max-w-4xl mt-20">
         <h1 className='text-left text-3xl text-secondary'>&quot;The scales of justice balance with evidence, not emotion.&quot;</h1>
         
         <div className="mt-7">
@@ -34,8 +34,8 @@ const LawyerForm2 = () => {
         </div>
         
         <div className='flex flex-col md:flex-row justify-between items-center mt-10 gap-5'>
-          <button className='bg-secondary p-3 w-full md:w-1/3 rounded-md text-white text-xl' onClick={()=>navigate('/lawyer-next')}>Previous</button>
-          <button className='bg-secondary p-3 w-full md:w-1/3 rounded-md text-white text-xl' onClick={()=>navigate('/lawyer-dashboard')}>Submit</button>
+          <button className='bg-secondary p-3 cursor-pointer w-full md:w-1/3 rounded-md text-white text-xl' onClick={()=>navigate('/lawyer-next')}>Previous</button>
+          <button className='bg-secondary p-3 cursor-pointer w-full md:w-1/3 rounded-md text-white text-xl' onClick={()=>navigate('/lawyer-dashboard')}>Submit</button>
         </div>
       </div>
     </section>
