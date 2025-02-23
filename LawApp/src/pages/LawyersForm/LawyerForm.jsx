@@ -36,7 +36,6 @@ const LawyerForm = () => {
         </div>
 
         <div className='flex flex-col md:flex-row justify-between items-center mt-10 gap-5'>
-          <button className='bg-secondary p-3 w-full md:w-1/3 rounded-md text-white text-xl hidden md:block'>Previous</button>
           <button 
             className='bg-secondary p-3 w-full md:w-1/3 rounded-md text-white text-xl' 
             onClick={() => navigate('/lawyer-next')}
