@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header2 from '../../components/Header2';
 
 const LawyerForm = () => {
   const navigate = useNavigate();

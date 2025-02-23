@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header2 from '../../components/Header2';
 
 const LawyerForm1 = () => {
   const navigate = useNavigate();
