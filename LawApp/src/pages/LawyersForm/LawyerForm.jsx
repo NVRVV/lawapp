@@ -4,58 +4,112 @@ import Header2 from '../../components/Header2';
 
 const LawyerForm = () => {
   const navigate = useNavigate();
-  const [screenSize, setScreenSize] = useState(getScreenSize());
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  // Function to determine screen size category
-  function getScreenSize() {
-    const width = window.innerWidth;
-    if (width <= 640) {
-      return 'mobile'; // Mobile view: up to 640px
-    } else if (width <= 1024) {
-      return 'tablet'; // Tablet view: 641px to 1024px
-    } else {
-      return 'desktop'; // Desktop view: above 1024px
-    }
-  }
-
-  // Update screen size on window resize
+  // Update window width on resize
   useEffect(() => {
     const handleResize = () => {
-      setScreenSize(getScreenSize());
+      setWindowWidth(window.innerWidth);
     };
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize); // Cleanup
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Define styles based on screen size
-  let containerStyles, inputWidth, buttonStyles, marginStyles;
-  if (screenSize === 'mobile') {
-    containerStyles = 'flex flex-col ml-5 mr-5 mt-5';
-    inputWidth = 'w-full'; // Full width for mobile
-    buttonStyles = 'p-2 w-full text-lg'; // Full-width buttons
-    marginStyles = 'ml-0'; // No left margin
-  } else if (screenSize === 'tablet') {
-    containerStyles = 'flex flex-col ml-20 mr-20 mt-10';
-    inputWidth = 'w-[400px]'; // Fixed width for tablet
-    buttonStyles = 'p-3 w-40 text-xl';
-    marginStyles = 'ml-0 gap-5'; // Small gap between buttons
+  // Determine the view based on window width
+  let view;
+  if (windowWidth < 768) {
+    // Mobile view (less than 768px)
+    view = (
+      <div className="lawyer1 flex-col items-center p-4">
+        <h1 className="text-left text-xl mt-5 text-secondary">Welcome!</h1>
+        <div className="flex flex-col mt-4 w-full">
+          <label htmlFor="username" className="text-lg text-left mt-2">
+            Username
+          </label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your username"
+            className="lawyer-input p-2 mt-1 pl-3 text-base focus:outline-none w-full"
+            required
+          />
+        </div>
+        <div className="flex flex-col mt-4 w-full">
+          <label htmlFor="experience" className="text-lg text-left mt-2">
+            Experience
+          </label>
+          <input
+            type="tel"
+            placeholder="Enter your experience"
+            className="lawyer-input p-2 mt-1 pl-3 text-base focus:outline-none w-full"
+            min="0"
+            step="1"
+            pattern="\d+"
+          />
+        </div>
+        <div className="flex flex-col mt-6 w-full">
+          <button className="bg-secondary p-2 w-full rounded-sm text-white cursor-pointer text-base mb-2 hidden">
+            Previous
+          </button>
+          <button
+            className="bg-secondary p-2 w-full rounded-sm text-white cursor-pointer text-base"
+            onClick={() => navigate('/lawyer-next')}
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    );
+  } else if (windowWidth >= 768 && windowWidth < 1024) {
+    // Tablet view (768px to 1023px)
+    view = (
+      <div className="lawyer1 flex-col items-center p-6">
+        <h1 className="text-left text-2xl mt-8 text-secondary">Welcome!</h1>
+        <div className="flex flex-col mt-6 w-full max-w-md">
+          <label htmlFor="username" className="text-xl text-left mt-2">
+            Username
+          </label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your username"
+            className="lawyer-input p-2 mt-1 pl-4 text-lg focus:outline-none w-full"
+            required
+          />
+        </div>
+        <div className="flex flex-col mt-6 w-full max-w-md">
+          <label htmlFor="experience" className="text-xl text-left mt-2">
+            Experience
+          </label>
+          <input
+            type="tel"
+            placeholder="Enter your experience"
+            className="lawyer-input p-2 mt-1 pl-4 text-lg focus:outline-none w-full"
+            min="0"
+            step="1"
+            pattern="\d+"
+          />
+        </div>
+        <div className="flex flex-col mt-8 w-full max-w-md">
+          <button className="bg-secondary p-2 w-full rounded-sm text-white cursor-pointer text-lg mb-2 hidden">
+            Previous
+          </button>
+          <button
+            className="bg-secondary p-2 w-full rounded-sm text-white cursor-pointer text-lg"
+            onClick={() => navigate('/lawyer-next')}
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    );
   } else {
-    // Desktop
-    containerStyles = 'flex-row md:flex-col ml-92 mr-92 rounded-xl mt-15';
-    inputWidth = 'w-[631px]'; // Original width for desktop
-    buttonStyles = 'p-3 w-30 text-xl';
-    marginStyles = 'ml-135'; // Original margin for Next button
-  }
-
-  return (
-    <section className="bg-bg2 min-h-screen w-full flex flex-col justify-center items-center">
-      <Header2 />
-      <div className={`lawyer1 ${containerStyles}`}>
-        <h1 className="text-left text-3xl mt-10 text-secondary ml-0 md:ml-10">
-          Welcome!
-        </h1>
-        <div className={`flex-1 flex-col mt-7 ${screenSize === 'mobile' ? 'ml-0' : 'ml-10'}`}>
-          <div className="flex flex-col">
+    // Desktop view (1024px and above)
+    view = (
+      <div className="lawyer1 flex-col md:flex-row ml-92 mr-92 rounded-xl mt-15">
+        <h1 className="text-left text-3xl ml-10 mt-10 text-secondary">Welcome!</h1>
+        <div className="flex-1 flex-col md:flex-row ml-10 mt-7">
+          <div className="flex flex-col w-full md:w-[631px]">
             <label
               htmlFor="username"
               className="text-2xl text-left transition-opacity duration-300"
@@ -66,12 +120,12 @@ const LawyerForm = () => {
               type="email"
               id="email"
               placeholder="Enter your username"
-              className={`lawyer-input p-2 mt-2 pl-5 text-xl focus:outline-none ${inputWidth}`}
+              className="lawyer-input p-2 mt-2 pl-5 text-xl focus:outline-none w-full md:w-[631px]"
               required
             />
           </div>
         </div>
-        <div className={`flex flex-col mt-5 ${screenSize === 'mobile' ? 'ml-0' : 'ml-10'}`}>
+        <div className="flex flex-col md:flex-row ml-10 mt-5 w-full md:w-[631px]">
           <label
             htmlFor="experience"
             className="text-2xl text-left transition-opacity duration-300"
@@ -81,30 +135,31 @@ const LawyerForm = () => {
           <input
             type="tel"
             placeholder="Enter your experience"
-            className={`lawyer-input p-2 mt-2 pl-5 text-xl focus:outline-none ${inputWidth}`}
+            className="lawyer-input p-2 mt-2 pl-5 text-xl focus:outline-none w-full md:w-[631px]"
             min="0"
             step="1"
             pattern="\d+"
           />
         </div>
-        <div
-          className={`flex ${
-            screenSize === 'mobile' ? 'flex-col' : 'flex-col md:flex-row'
-          } gap-5 mt-10 ${screenSize === 'mobile' ? 'ml-0' : 'ml-10'}`}
-        >
-          <button
-            className={`bg-secondary ${buttonStyles} rounded-sm text-white cursor-pointer hidden`}
-          >
+        <div className="flex flex-col md:flex-row gap-105 ml-10 mt-10">
+          <button className="bg-secondary p-3 w-full md:w-30 rounded-sm text-white cursor-pointer text-xl hidden">
             Previous
           </button>
           <button
-            className={`bg-secondary ${buttonStyles} rounded-sm text-white cursor-pointer ${marginStyles}`}
+            className="bg-secondary p-3 w-full md:w-30 rounded-sm text-white cursor-pointer text-xl ml-135"
             onClick={() => navigate('/lawyer-next')}
           >
             Next
           </button>
         </div>
       </div>
+    );
+  }
+
+  return (
+    <section className="bg-bg2 min-h-screen w-full justify-center items-center">
+      <Header2 />
+      {view}
     </section>
   );
 };
