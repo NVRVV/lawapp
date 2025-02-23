@@ -46,12 +46,34 @@ body {
 .login {
   border-radius: 100px 0px 0px 100px;
   transition: border-radius 0.5s ease-in-out;
+ 
+}
+
+.login h1,p{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-t {
+  align-content: center;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  align-self: center;
+}
+.login-t div{
+  align-content: center;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 100%;
 }
 
 /* Form Fields */
 .login-input {
   background: #f9f9f9;
-  height: 40px;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 2px;
   border: none;
@@ -71,8 +93,6 @@ body {
 
 /* Radio Buttons */
 .radio-box {
-  padding: 10px 20px;
-  font-size: 1.5rem;
   display: flex;
   align-items: center;
   border: none;
@@ -132,9 +152,7 @@ input[type="radio"]:checked + span {
   text-align: center;
   align-items: center;
   justify-content: center;
-  margin-left: 42.5%;
-  margin-right: 42.5%;
-  margin-top: 15%;
+  margin-top: 10%;
   height: 50px;
   width: 200px;
   border-radius: 5px;
