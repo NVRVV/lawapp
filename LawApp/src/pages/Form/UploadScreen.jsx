@@ -86,7 +86,7 @@ const UploadScreen = ({ uploadedFiles, setUploadedFiles }) => {
   // Render different layouts based on screen size using if-else-if
   if (screenSize === 'mobile') {
     return (
-      <section className="w-full bg-cover bg-center" style={{ backgroundImage: `url(${form1})` }}>
+      <section className="w-full bg-cover bg-center " style={{ backgroundImage: `url(${form1})` }}>
         <div
           className="flex flex-col items-center justify-center h-220 w-full "
         >
@@ -148,12 +148,12 @@ const UploadScreen = ({ uploadedFiles, setUploadedFiles }) => {
     );
   } else { // desktop
     return (
-      <section style={{ backgroundImage: `url(${form1})` }}>
+      <section style={{ backgroundImage: `url(${form1})` }} className="bg-cover bg-center h-screen w-full">
         <div
-          className="flex flex-col items-center justify-center max-h-screen w-full bg-cover bg-center pt-20"
+          className="flex flex-col items-center justify-center  pt-20"
         >
           <div 
-            className={`screens1 flex-row md:flex-col ml-100 mr-100 mb-33    rounded-lg items-center justify-center ${
+            className={`screens1 flex-row md:flex-col ml-100 mr-100 mb-33 rounded-lg items-center justify-center ${
               isDragging ? 'bg-gray-200' : ''
             }`}
             onDragOver={handleDragOver}
