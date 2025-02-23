@@ -73,7 +73,7 @@ const LawyerForm = () => {
             type="email"
             id="email"
             placeholder="Enter your username"
-            className="lawyer-input p-2 mt-1 pl-4 text-lg focus:outline-none w-full"
+            className="lawyer-input p-2 mt-1 pl-4 text-lg focus:outline-none w-full "
             required
           />
         </div>
@@ -106,7 +106,7 @@ const LawyerForm = () => {
   } else {
     // Desktop view (1024px and above)
     view = (
-      <div className="lawyer1 flex-col md:flex-row ml-92 mr-92 rounded-xl mt-15">
+      <div className="lawyer1 flex-col md:flex-row ml-40 mr-40 rounded-xl mt-5 ">
         <h1 className="text-left text-3xl ml-10 mt-10 text-secondary">Welcome!</h1>
         <div className="flex-1 flex-col md:flex-row ml-10 mt-7">
           <div className="flex flex-col w-full md:w-[631px]">
@@ -125,7 +125,7 @@ const LawyerForm = () => {
             />
           </div>
         </div>
-        <div className="flex flex-col md:flex-row ml-10 mt-5 w-full md:w-[631px]">
+        <div className="flex flex-row md:flex-col ml-10 mt-5 w-full md:w-[631px]">
           <label
             htmlFor="experience"
             className="text-2xl text-left transition-opacity duration-300"

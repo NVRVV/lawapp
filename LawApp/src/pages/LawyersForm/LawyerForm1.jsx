@@ -38,7 +38,7 @@ const LawyerForm1 = () => {
     view = (
       <div className="lawyer1 flex-col items-center p-4">
         <h1 className="text-left text-xl mt-5 text-secondary">
-          "Law is order, and good law is good order."
+        &quot;Law is order, and good law is good order.&quot;
         </h1>
         <div className="flex flex-col mt-4 w-full">
           <label htmlFor="enrolment" className="text-lg text-left mt-2">
@@ -85,7 +85,7 @@ const LawyerForm1 = () => {
     view = (
       <div className="lawyer1 flex-col items-center p-6">
         <h1 className="text-left text-2xl mt-8 text-secondary">
-          "Law is order, and good law is good order."
+          &quot;Law is order, and good law is good order.&quot;
         </h1>
         <div className="flex flex-col mt-6 w-full max-w-md">
           <label htmlFor="enrolment" className="text-xl text-left mt-2">
@@ -130,9 +130,9 @@ const LawyerForm1 = () => {
   } else {
     // Desktop view (1024px and above)
     view = (
-      <div className="lawyer1 flex-row md:flex-col ml-92 mr-92 rounded-xl mt-15">
+      <div className="lawyer1 flex-row md:flex-col ml-40 mr-40 rounded-xl mt-15">
         <h1 className="text-left text-3xl ml-10 mt-10 text-secondary">
-          "Law is order, and good law is good order."
+          &quot;Law is order, and good law is good order.&quot;
         </h1>
         <div className="flex flex-row md:flex-col ml-10 mt-7">
           <label
