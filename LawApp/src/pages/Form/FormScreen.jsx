@@ -45,7 +45,6 @@ const FormScreen = () => {
   if (screenSize === 'mobile') {
     return (
       <section className="w-full bg-cover bg-center" style={{ backgroundImage: `url(${form1})` }}>
-        <Header1 />
         <div
           className="flex flex-col items-center justify-center h-220 w-full  pt-10"
         >
@@ -120,7 +119,6 @@ const FormScreen = () => {
   } else if (screenSize === 'tablet') {
     return (
       <section className="bg-cover bg-center" style={{ backgroundImage: `url(${form1})` }}>
-        <Header1 />
         <div
           className="flex flex-col items-center justify-center h-220   pt-10"
         >
@@ -195,7 +193,6 @@ const FormScreen = () => {
   } else { // desktop
     return (
       <section style={{ backgroundImage: `url(${form1})` }}>
-        <Header1 />
         <div
           className="flex flex-col items-center justify-center h-173 w-full bg-cover bg-center pt-20"
         >

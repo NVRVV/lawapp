@@ -43,7 +43,7 @@ const Header2 = () => {
   if (screenSize === 'mobile') {
     return (
       <>
-        <header className="p-4 bg-transparent">
+        <header className="p-4 w-full bg-transparent">
            <div className="flex flex-row items-center">
               <div className="flex flex-1 flex-col items-start mt-3 mb-3 md:mb-0">
                 <h1 
@@ -83,7 +83,7 @@ const Header2 = () => {
   } else if (screenSize === 'tablet') {
     return (
       <>
-        <header className="p-4 bg-transparent">
+        <header className="p-4 w-full bg-transparent">
           <div className="flex flex-row md:flex-row items-center justify-between">
             <div className="flex flex-col items-center md:items-start mb-4 md:mb-0">
               <h1 
@@ -121,7 +121,7 @@ const Header2 = () => {
   } else { // desktop
     return (
       <>
-        <header className="p-4 bg-transparent">
+        <header className="p-4 w-full bg-transparent">
           <div className="flex  flex-col md:flex-row">
             <div className="flex flex-1 items-start flex-col mt-5 mb-5 ml-5">
               <h1 

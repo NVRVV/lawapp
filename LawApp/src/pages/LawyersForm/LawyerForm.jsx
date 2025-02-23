@@ -6,7 +6,6 @@ const LawyerForm = () => {
   const navigate = useNavigate();
   return (
     <section className="bg-bg2 min-h-screen flex flex-col items-center px-5 md:px-10 lg:px-20">
-      <Header2 />
       <div className="bg-white shadow-lg rounded-xl p-5 w-full max-w-lg md:max-w-2xl lg:max-w-4xl mt-10">
         <h1 className='text-left text-3xl text-secondary'>Welcome!</h1>
         

@@ -87,7 +87,6 @@ const UploadScreen = ({ uploadedFiles, setUploadedFiles }) => {
   if (screenSize === 'mobile') {
     return (
       <section className="w-full bg-cover bg-center" style={{ backgroundImage: `url(${form1})` }}>
-        <Header1 />
         <div
           className="flex flex-col items-center justify-center h-220 w-full "
         >
@@ -119,7 +118,6 @@ const UploadScreen = ({ uploadedFiles, setUploadedFiles }) => {
   } else if (screenSize === 'tablet') {
     return (
       <section className="bg-cover bg-center" style={{ backgroundImage: `url(${form1})` }}>
-        <Header1 />
         <div
           className="flex flex-col items-center justify-center w-full h-220 pt-10"
         >
@@ -151,7 +149,6 @@ const UploadScreen = ({ uploadedFiles, setUploadedFiles }) => {
   } else { // desktop
     return (
       <section style={{ backgroundImage: `url(${form1})` }}>
-        <Header1 />
         <div
           className="flex flex-col items-center justify-center max-h-screen w-full bg-cover bg-center pt-20"
         >
