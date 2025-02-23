@@ -49,7 +49,7 @@ const FilterSection = ({ onFilterChange, filters }) => {
   // Render different layouts based on screen size using if-else-if
   if (screenSize === 'mobile') {
     return (
-      <div className="w-full bg-white text-blackx p-4 rounded-lg shadow-lg glass-effect">
+      <div className="w-full bg-white text-blackx p-4 mt-5 rounded-lg shadow-lg glass-effect">
         <h2 className="text-lg font-bold mb-4 flex items-center"><img className='w-6 h-6' src={fitericon} /> Filters</h2>
         <div className="space-y-3">
           {/* Rating Filter */}
@@ -84,7 +84,7 @@ const FilterSection = ({ onFilterChange, filters }) => {
                 onChange={(e) => onFilterChange('successRate', parseInt(e.target.value))}
                 className="w-full accent-secondary"
               />
-              <p className="text-gray-300 text-sm">Selected: 0% to {filters.successRate || 100}%</p>
+              <p className="text-gray-800 text-sm">Selected: 0% to {filters.successRate || 100}%</p>
             </div>
           </div>
 
@@ -100,7 +100,7 @@ const FilterSection = ({ onFilterChange, filters }) => {
                 onChange={(e) => onFilterChange('experience', parseInt(e.target.value))}
                 className="w-full accent-secondary"
               />
-              <p className="text-gray-300 text-sm">Selected: {filters.experience || 1} years</p>
+              <p className="text-gray-800 text-sm">Selected: {filters.experience || 1} years</p>
             </div>
           </div>
 
@@ -161,7 +161,7 @@ const FilterSection = ({ onFilterChange, filters }) => {
                 onChange={(e) => onFilterChange('successRate', parseInt(e.target.value))}
                 className="w-full accent-secondary"
               />
-              <p className="text-gray-300 text-base">Selected: 0% to {filters.successRate || 100}%</p>
+              <p className="text-gray-800 text-base">Selected: 0% to {filters.successRate || 100}%</p>
             </div>
           </div>
 
@@ -177,7 +177,7 @@ const FilterSection = ({ onFilterChange, filters }) => {
                 onChange={(e) => onFilterChange('experience', parseInt(e.target.value))}
                 className="w-full accent-secondary"
               />
-              <p className="text-gray-300 text-base">Selected: {filters.experience || 1} years</p>
+              <p className="text-gray-800 text-base">Selected: {filters.experience || 1} years</p>
             </div>
           </div>
 
@@ -203,7 +203,7 @@ const FilterSection = ({ onFilterChange, filters }) => {
     );
   } else { // desktop
     return (
-      <div className=" w-1/3 bg-gray-800 text-white p-7 rounded-lg shadow-lg glass-effect">
+      <div className=" w-1/3 bg-white text-black p-7 rounded-lg shadow-lg glass-effect">
         <h2 className="text-xl font-bold mb-4 flex items-center"><img className='w-7 h-7' src={fitericon} /> Filters</h2>
         <div className="space-y-4">
           {/* Rating Filter */}
@@ -236,9 +236,9 @@ const FilterSection = ({ onFilterChange, filters }) => {
                 max="100" 
                 value={filters.successRate || 100} // Default to 0 (show all)
                 onChange={(e) => onFilterChange('successRate', parseInt(e.target.value))}
-                className="w-full accent-white"
+                className="w-full accent-secondary"
               />
-              <p className="text-gray-300">Selected: 0% to {filters.successRate || 100}%</p>
+              <p className="text-gray-800">Selected: 0% to {filters.successRate || 100}%</p>
             </div>
           </div>
 
@@ -252,9 +252,9 @@ const FilterSection = ({ onFilterChange, filters }) => {
                 max="20" 
                 value={filters.experience || 1} // Default to minimum (1 year)
                 onChange={(e) => onFilterChange('experience', parseInt(e.target.value))}
-                className="w-full accent-white"
+                className="w-full accent-secondary"
               />
-              <p className="text-gray-300">Selected: {filters.experience || 1} years</p>
+              <p className="text-gray-800">Selected: {filters.experience || 1} years</p>
             </div>
           </div>
 
@@ -270,7 +270,7 @@ const FilterSection = ({ onFilterChange, filters }) => {
                     checked={filters.categories.includes(category)}
                     onChange={() => onFilterChange('categories', category)}
                   />
-                  <span className="text-white">{category}</span>
+                  <span className="text-black">{category}</span>
                 </label>
               ))}
             </div>

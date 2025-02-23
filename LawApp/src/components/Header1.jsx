@@ -44,8 +44,8 @@ const Header1 = () => {
     return (
       <>
         <header className="p-4 bg-transparent">
-          <div className="flex flex-row items-center">
-            <div className="flex flex-col items-center mb-4 md:mb-0">
+          <div className="flex  flex-row items-center">
+            <div className="flex flex-1 flex-col items-start mb-4 md:mb-0">
               <h1 
                 className="text-2xl text-white cursor-pointer font-bold"
                 onClick={() => navigate('/')}

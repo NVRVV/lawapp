@@ -58,7 +58,7 @@ const ClientDash = () => {
       <div 
         className="min-h-screen w-full flex-col items-center bg-cover bg-center" 
         style={{ 
-          background: 'linear-gradient(135deg, #ff8a5c, #ff4d4d)', // Orange gradient similar to the image
+          background: '#9ECA9E', // Orange gradient similar to the image
         }}
       >
         {/* Header */}

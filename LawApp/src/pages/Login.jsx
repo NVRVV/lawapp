@@ -71,7 +71,7 @@ const Login = () => {
                 Want to join us{" "}
                 <span 
                   className="text-secondary cursor-pointer"
-                  onClick={() => navigate('/login')}
+                  onClick={() => navigate('/register')}
                 >
                   Create Account
                 </span>
@@ -142,9 +142,9 @@ const Login = () => {
 
                 <button 
                   className="login-btn text-lg p-2 mt-10 mb-5 w-full cursor-pointer"
-                  onClick={() => navigate('/lawyer-form')}
+                  onClick={() => navigate('/user-profile')}
                 >
-                  Create Account
+                  Login
                 </button>
               </form>
             </div>
@@ -182,7 +182,7 @@ const Login = () => {
                 Want to join us{" "}
                 <span 
                   className="text-secondary cursor-pointer"
-                  onClick={() => navigate('/login')}
+                  onClick={() => navigate('/register')}
                 >
                   Create Account
                 </span>
