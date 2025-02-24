@@ -13,64 +13,43 @@ const Register = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  // State to track the current screen size category
-  const [screenSize, setScreenSize] = useState('desktop'); // Default to desktop
+  const [screenSize, setScreenSize] = useState('desktop');
+  const BREAKPOINTS = { mobile: 768, tablet: 1024, desktop: 1024 };
 
-  // Define breakpoints (in pixels)
-  const BREAKPOINTS = {
-    mobile: 768,  // Up to 768px for mobile
-    tablet: 1024, // Up to 1024px for tablet
-    desktop: 1024 // Above 1024px for desktop
-  };
-
-  // Update screen size on mount and when window is resized
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      if (width <= BREAKPOINTS.mobile) {
-        setScreenSize('mobile');
-      } else if (width <= BREAKPOINTS.tablet) {
-        setScreenSize('tablet');
-      } else {
-        setScreenSize('desktop');
-      }
+      if (width <= BREAKPOINTS.mobile) setScreenSize('mobile');
+      else if (width <= BREAKPOINTS.tablet) setScreenSize('tablet');
+      else setScreenSize('desktop');
     };
-
-    // Initial check
     handleResize();
-
-    // Add event listener for resize
     window.addEventListener('resize', handleResize);
-
-    // Cleanup event listener on unmount
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleRegister = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:5000/api/auth/register', {
-        first_name: firstName,
-        last_name: lastName,
-        email,
-        password,
-        role: isLawyerSelected ? 'lawyer' : 'client',
-      });
-
-      // Assuming the response contains the member_id
-      const member_id = response.data.member_id;
-
-      // Navigate based on the selected role
-      if (isLawyerSelected) {
-        navigate('/login', { state: { member_id, firstName, lastName } });
-      } else {
-        navigate('/login');
-      }
-    } catch (error) {
-      console.error('Registration failed', error);
-      setError('Registration failed. Please try again.');
+// In Register.jsx, handleRegister
+const handleRegister = async (e) => {
+  e.preventDefault();
+  try {
+    await axios.post('http://localhost:5000/api/auth/register', {
+      first_name: firstName.slice(0, 50),
+      last_name: lastName.slice(0, 50),
+      email: email.slice(0, 100),
+      password,
+      role: isLawyerSelected ? 'lawyer' : 'client',
+    });
+    // Navigate based on role after successful registration
+    if (isLawyerSelected) {
+      navigate('/lawyer-form');
+    } else {
+      navigate('/user-profile');
     }
-  };
+  } catch (error) {
+    console.error('Registration failed', error);
+    setError(error.response?.data?.details || 'Registration failed. Please try again.');
+  }
+};
   
   // Render different layouts based on screen size using if-else-if
   if (screenSize === 'mobile') {

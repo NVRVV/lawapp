@@ -9,59 +9,45 @@ const Login = () => {
   const [isLawyerSelected, setIsLawyerSelected] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  // State to track the current screen size category
-  const [screenSize, setScreenSize] = useState('desktop'); // Default to desktop
+  const [screenSize, setScreenSize] = useState('desktop');
+  const BREAKPOINTS = { mobile: 768, tablet: 1024, desktop: 1024 };
 
-  // Define breakpoints (in pixels)
-  const BREAKPOINTS = {
-    mobile: 768,  // Up to 768px for mobile
-    tablet: 1024, // Up to 1024px for tablet
-    desktop: 1024 // Above 1024px for desktop
-  };
-
-  // Update screen size on mount and when window is resized
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      if (width <= BREAKPOINTS.mobile) {
-        setScreenSize('mobile');
-      } else if (width <= BREAKPOINTS.tablet) {
-        setScreenSize('tablet');
-      } else {
-        setScreenSize('desktop');
-      }
+      if (width <= BREAKPOINTS.mobile) setScreenSize('mobile');
+      else if (width <= BREAKPOINTS.tablet) setScreenSize('tablet');
+      else setScreenSize('desktop');
     };
-
-    // Initial check
     handleResize();
-
-    // Add event listener for resize
     window.addEventListener('resize', handleResize);
-
-    // Cleanup event listener on unmount
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
-        email,
-        password,
-      });
-      localStorage.setItem('token', response.data.token);
-      if (isLawyerSelected) {
-        navigate('/lawyer-dashboard');
+      const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const { token, first_name } = response.data;
+      localStorage.setItem('token', token);
+
+      // Decode JWT to get role (assuming role is in the payload)
+      const decodedToken = JSON.parse(atob(token.split('.')[1]));
+      const role = decodedToken.role;
+
+      if (role === 'lawyer') {
+        navigate('/lawyer-dashboard'); // Redirect to form after login for lawyers
       } else {
         navigate('/user-profile');
       }
     } catch (error) {
       console.error('Login failed', error);
+      setError('Invalid credentials. Please try again.');
     }
   };
-
   // Render different layouts based on screen size using if-else-if
   if (screenSize === 'mobile') {
     return (
