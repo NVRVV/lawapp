@@ -388,8 +388,8 @@ const Register = () => {
           {/* Right Section */}
           <div className="login flex flex-10 text-black bg-bg h-screen w-max items-center justify-center">
             <div className="flex-col ml-15 mr-15">
-              <h1 className="text-4xl ml-25 mr-25 font-bold">Create a Account</h1>
-              <p className="text-xl ml-35 mr-35 mt-5">
+              <h1 className="text-3xl font-bold">Create a Account</h1>
+              <p className="text-l  mt-5">
                 Already register{" "}
                 <span 
                   className="text-secondary cursor-pointer"
@@ -400,7 +400,7 @@ const Register = () => {
               </p>
 
               {/* Radio Buttons */}
-              <div className="flex flex-row ml-40 mr-40 p-2 gap-x-5">
+              <div className="flex flex-row mx-40 p-2 gap-x-5">
                 <label className="radio-box">
                   <input
                     type="radio"
@@ -426,11 +426,11 @@ const Register = () => {
 
               {/* Register Form */}
               <form className="flex flex-col">
-                <div className="flex flex-row gap-x-10">
+                <div className="flex flex-row mx-10 gap-x-10">
                   <div className="flex flex-col">
                     <label 
                       htmlFor="first"
-                      className={`transition-opacity duration-300 ${isFocused ? "opacity-100" : "opacity-0"}`}
+                      className={`transition-opacity text-m mt-3 duration-300 ${isFocused ? "opacity-100" : "opacity-0"}`}
                     >
                       First Name
                     </label>
@@ -438,7 +438,7 @@ const Register = () => {
                       type="text" 
                       id="first"
                       placeholder="First Name"
-                      className="login-input p-2 mt-2 pl-5 focus:outline-none"
+                      className="login-input text-xs p-2 mt-2 pl-5 focus:outline-none"
                       onFocus={() => setIsFocused(true)}
                       onBlur={() => setIsFocused(false)}
                       required
@@ -447,7 +447,7 @@ const Register = () => {
                   <div className="flex flex-col">
                     <label 
                       htmlFor="last"
-                      className={`transition-opacity duration-300 ${isFocused ? "opacity-100" : "opacity-0"}`}
+                      className={`transition-opacity text-m mt-3  duration-300 ${isFocused ? "opacity-100" : "opacity-0"}`}
                     >
                       Last Name
                     </label>
@@ -455,7 +455,7 @@ const Register = () => {
                       type="text" 
                       id="last"
                       placeholder="Last Name"
-                      className="login-input p-2 mt-2 pl-5 focus:outline-none"
+                      className="login-input text-xs p-2 mt-2 pl-5 focus:outline-none"
                       onFocus={() => setIsFocused(true)}
                       onBlur={() => setIsFocused(false)}
                       required
@@ -463,10 +463,12 @@ const Register = () => {
                   </div>
                 </div>
 
+                
+                <div className="flex flex-row mx-10 gap-x-10">
                 <div className="flex flex-col mt-4">
                   <label
                     htmlFor="email"
-                    className={`transition-opacity duration-300 ${isFocused ? "opacity-100" : "opacity-0"}`}
+                    className={`transition-opacity text-m mt-3 duration-300 ${isFocused ? "opacity-100" : "opacity-0"}`}
                   >
                     Email
                   </label>
@@ -474,17 +476,16 @@ const Register = () => {
                     type="email"
                     id="email"
                     placeholder="Enter your Email"
-                    className="login-input p-2 mt-2 pl-5 focus:outline-none"
+                    className="login-input p-2 text-xs w-auto mt-2 pl-5 focus:outline-none"
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
                     required
                   />
                 </div>
-
-                <div className="flex flex-col">
+                <div className="flex flex-col mt-4">
                   <label
                     htmlFor="password"
-                    className={`text-ls mt-5 transition-opacity duration-300 ${isFocused ? "opacity-100" : "opacity-0"}`}
+                    className={`text-m mt-3 transition-opacity duration-300 ${isFocused ? "opacity-100" : "opacity-0"}`}
                   >
                     Password
                   </label>
@@ -492,14 +493,16 @@ const Register = () => {
                     type="password"
                     id="password"
                     placeholder="Enter your Password"
-                    className="login-input p-2 mt-2 pl-5 focus:outline-none"
+                    className="login-input text-xs w-auto p-2 mt-2 pl-5 focus:outline-none"
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
                     required
                   />
                 </div>
+                </div>
+                
 
-                <p className="text-sm mt-5">
+                <p className="text-sm mt-2">
                   <input
                     className="mr-2 cursor-pointer"
                     type="checkbox"
@@ -512,7 +515,7 @@ const Register = () => {
                 </p>
 
                 <button 
-                  className="login-btn text-2xl p-2 mt-5 cursor-pointer"
+                  className="login-btn text-l w-50 mx-35 mt-3  p-2 cursor-pointer"
                   onClick={() => navigate('/lawyer-form')}
                 >
                   Create Account

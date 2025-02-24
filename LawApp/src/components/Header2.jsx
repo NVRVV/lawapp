@@ -123,30 +123,30 @@ const Header2 = () => {
       <>
         <header className="p-4 w-full bg-transparent">
           <div className="flex  flex-col md:flex-row">
-            <div className="flex flex-1 items-start flex-col mt-5 mb-5 ml-5">
+            <div className="flex flex-1 items-start flex-col mt-5 mb-2 ml-5">
               <h1 
-                className="text-5xl text-black  cursor-pointer font-bold"
+                className="text-3xl text-black  cursor-pointer font-bold"
                 onClick={() => navigate('/')}
               >
                 SLMB
               </h1>
-              <p className="text-xl text-black font-medium mt-2">Your trusted legal partner</p>
+              <p className="text-xs text-black font-medium ">Your trusted legal partner</p>
             </div>
             <div className="flex items-center justify-center">
               <img 
                 src={filter1} 
                 alt="Filter" 
-                className="cursor-pointer w-10 h-10 ml-5 mr-5"
+                className="cursor-pointer w-6 h-6 ml-5 mr-5"
                 onClick={() => navigate('/filter')}
               />
               <img 
                 src={pro1} 
                 alt="Profile" 
-                className="cursor-pointer w-10 h-10 ml-5"
+                className="cursor-pointer w-6 h-6 ml-5"
                 onClick={() => navigate('/user-profile')}
               />
               <h1 
-                className="text-3xl mr-5 text-black cursor-pointer"
+                className="text-xl mr-5 text-black cursor-pointer"
                 onClick={() => navigate('/login')}
               >
                 Login

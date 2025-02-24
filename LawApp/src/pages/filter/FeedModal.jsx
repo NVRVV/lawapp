@@ -25,6 +25,11 @@ const FeedModal = ({ feed, onClose }) => {
         >
           Close
         </button>
+        <button
+          className="mt-6 px-4 cursor-pointer py-2 bg-secondary text-white rounded-md hover:bg-secondary transition-colors"
+        >
+          Upload
+        </button>
       </div>
     </div>
   );

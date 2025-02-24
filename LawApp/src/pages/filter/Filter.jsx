@@ -210,12 +210,6 @@ const Filter = () => {
       <>
         <section className='w-full h-full bg-cover bg-center' style={{ backgroundImage: "url('/src/assets/filter-hero.jpg')" }}>
           <Header2 />
-          <button 
-            className='fixed bottom-5 right-5 p-4 bg-bg1 text-2xl rounded-full shadow-lg hover:bg-opacity-90 hover:shadow-xl transition-all'
-            onClick={() => navigate('/form')}
-          >
-            Upload
-          </button>
           <div className="container mx-auto p-6 flex gap-6">
             {/* Filter Section (Left) */}
             <FilterSection onFilterChange={handleFilterChange} filters={filters} />

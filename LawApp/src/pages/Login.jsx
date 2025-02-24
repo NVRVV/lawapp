@@ -290,8 +290,8 @@ const Login = () => {
           {/* Right Section */}
           <div className="login flex flex-8 text-black bg-bg h-screen w-max items-center justify-center">
             <div className="flex-col ml-15 mr-15">
-              <h1 className="text-5xl ml-35 mr-35 font-bold">Login</h1>
-              <p className="text-xl ml-15 mr-15 mt-5">
+              <h1 className="text-4xl ml-35 mr-35 font-bold">Login</h1>
+              <p className="text-l ml-15 mr-15 mt-5">
                 Want to Sign Up?{" "}
                 <span 
                   className="text-secondary cursor-pointer" 
@@ -331,7 +331,7 @@ const Login = () => {
                 <div className="flex flex-col">
                   <label
                     htmlFor="email"
-                    className={`text-xl transition-opacity duration-300 ${isFocused ? "opacity-100" : "opacity-0"}`}
+                    className={`text-l transition-opacity duration-300 ${isFocused ? "opacity-100" : "opacity-0"}`}
                   >
                     Email
                   </label>
@@ -339,7 +339,7 @@ const Login = () => {
                     type="email"
                     id="email"
                     placeholder="Enter your Email"
-                    className="login-input p-2 mt-2 pl-5 focus:outline-none"
+                    className="login-input p-2 text-xs  pl-5 focus:outline-none"
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
                     required
@@ -349,7 +349,7 @@ const Login = () => {
                 <div className="flex flex-col">
                   <label
                     htmlFor="password"
-                    className={`text-xl mt-5 transition-opacity duration-300 ${isFocused ? "opacity-100" : "opacity-0"}`}
+                    className={`text-l mt-3 transition-opacity duration-300 ${isFocused ? "opacity-100" : "opacity-0"}`}
                   >
                     Password
                   </label>
@@ -357,27 +357,14 @@ const Login = () => {
                     type="password"
                     id="password"
                     placeholder="Enter your Password"
-                    className="login-input p-2 mt-2 pl-5 focus:outline-none"
+                    className="login-input p-2 text-xs pl-5 focus:outline-none"
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
                     required
                   />
                 </div>
-
-                <p className="text-sm mt-5">
-                  <input
-                    className="mr-2 mt-5 mb-5 cursor-pointer"
-                    type="checkbox"
-                    name="terms"
-                    id="terms"
-                    required
-                  />
-                  I agree to the
-                  <span className="text-secondary"> Terms & Conditions</span>
-                </p>
-
                 <button 
-                  className="login-btn text-2xl p-2 mt-5 cursor-pointer"
+                  className="login-btn text-l w-50 mx-35 p-2 mt-5 cursor-pointer"
                   onClick={() => navigate('/user-profile')}
                 >
                   Login

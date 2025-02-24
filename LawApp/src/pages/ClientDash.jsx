@@ -63,32 +63,6 @@ const ClientDash = () => {
       >
         {/* Header */}
         <Header2 />
-
-        {/* Menu Button (Welcome Section on Mobile) */}
-        <div className='w-full '>
-        <button 
-          className="bg-white/30 backdrop-blur-md p-4 rounded-lg mt-20 ml-5 mr-5 shadow-lg glass-effect  flex items-center justify-between"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          <span className="text-xl font-semibold text-black">Menu</span>
-          <span className="text-black"><TbMenu className='ml-3 w-6 h-6'/></span>
-        </button>
-        </div>
-
-        {/* Menu Dropdown (Hidden by default, shown on click) */}
-        {isMenuOpen && (
-          <div className="bg-white/30 backdrop-blur-md p-4 rounded-lg mt-2 ml-5 mr-5 shadow-lg glass-effect ">
-            <h2 className="text-xl font-semibold text-black mb-2">Welcome, User Name</h2>
-            <p className="text-black mt-2 mb-2">ram@gmail.com <span className="text-red-500 cursor-pointer">Change</span></p>
-            <button 
-              className="bg-yellow-600 text-white p-2 rounded-lg w-full hover:bg-yellow-700"
-              onClick={() => navigate('/logout')} // Assuming a logout route or function
-            >
-              Logout
-            </button>
-          </div>
-        )}
-
         {/* Cases Table */}
         <div className="bg-white/30 backdrop-blur-md rounded-lg p-4 mt-5 ml-5 mr-5 shadow-lg glass-effect">
           <table className="w-full text-left text-black my-2">
@@ -137,17 +111,7 @@ const ClientDash = () => {
 
         {/* Main Content - Split into Welcome and Cases */}
         <div className="flex flex-col md:flex-row max-w-4xl mt-10 m-5 p-2 gap-6">
-          {/* Welcome Section */}
-          <div className="bg-white/30 backdrop-blur-md p-6 rounded-lg ml-5 mr-5 shadow-lg glass-effect w-full md:w-80">
-            <h2 className="text-2xl font-semibold text-black mb-4">Welcome, User Name</h2>
-            <p className="text-black mt-4 mb-4">ram@gmail.com <span className="text-red-500 cursor-pointer">Change</span></p>
-            <button 
-              className="bg-yellow-600 text-white p-2 rounded-lg w-full hover:bg-yellow-700"
-              onClick={() => navigate('/logout')} // Assuming a logout route or function
-            >
-              Logout
-            </button>
-          </div>
+
 
           {/* Cases Table */}
           <div className="bg-white/30 backdrop-blur-md rounded-lg p-6 mt-5 ml-5 mr-5 w-full md:w-full shadow-lg glass-effect">
@@ -199,16 +163,6 @@ const ClientDash = () => {
         {/* Main Content - Split into Welcome and Cases */}
         <div className="flex max-w-7xl mt-20 m-5 p-2 gap-6">
           {/* Welcome Section */}
-          <div className="bg-white/30 backdrop-blur-md pl-5 pr-5 pt-10 pb-10 rounded-lg ml-10 mr-10 shadow-lg glass-effect w-80">
-            <h2 className="text-3xl font-semibold text-black mb-4">Welcome, User Name</h2>
-            <p className="text-black mt-10 ml-2 mb-5">ram@gmail.com <span className="text-red-500 cursor-pointer">Change</span></p>
-            <button 
-              className="bg-yellow-600 text-white p-2 rounded-lg w-full hover:bg-yellow-700"
-              onClick={() => navigate('/logout')} // Assuming a logout route or function
-            >
-              Logout
-            </button>
-          </div>
 
           {/* Cases Table */}
           <div className="bg-white/30 backdrop-blur-md rounded-lg p-10 w-full md:w-auto shadow-lg glass-effect flex-3">

@@ -181,9 +181,10 @@ const Home = () => {
       <section className="bg-bg2 flex flex-col">
         <div className="hero w-full h-160 bg-cover bg-center" style={{ backgroundImage: "url('/src/assets/hero.png')" }}>
           <Header1 />
-          <h2 className="text-4xl text-white text-center mt-10">Welcome!</h2>
+          <h2 className="text-6xl text-white text-center mt-10">Welcome!</h2>
+          <p className='text-white text-xs mx-40 my-3'>Smart Lawyer Management System efficiently matches clients with the most suitable legal experts for their specific cases. It streamlines the process by providing detailed lawyer profiles and case-relevant recommendations with precision and professionalism.</p>
           <button 
-            className="text-white bg-secondary text-2xl w-56 h-12 flex items-center justify-center gap-2 px-4 py-3 mt-12 mx-auto rounded-lg shadow-md hover:text-secondary" // Adjusted for width, height, and hover effect
+            className="text-white bg-secondary text-l  flex items-center justify-center gap-2 p-2 px-4 mt-12 mx-auto rounded-lg shadow-md" // Adjusted for width, height, and hover effect
             onClick={() => navigate('/filter')}
           >
             Get Started <img src={AR} alt="Arrow" className="w-6 h-6 inline-block" />
