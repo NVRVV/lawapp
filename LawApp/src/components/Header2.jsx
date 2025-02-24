@@ -5,6 +5,31 @@ import { useNavigate } from 'react-router-dom';
 
 const Header2 = () => {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        // Check if first_name is in the token payload
+        if (decodedToken.first_name) {
+          setUser(decodedToken);
+        } else {
+          console.error('First name not found in token payload');
+        }
+      } catch (error) {
+        console.error('Failed to decode token:', error);
+      }
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setUser(null);
+    navigate('/login');
+  };
 
   // State to track the current screen size category
   const [screenSize, setScreenSize] = useState('desktop'); // Default to desktop
@@ -44,39 +69,64 @@ const Header2 = () => {
     return (
       <>
         <header className="p-4 w-full bg-transparent">
-           <div className="flex flex-row items-center">
-              <div className="flex flex-1 flex-col items-start mt-3 mb-3 md:mb-0">
-                <h1 
-                  className="text-2xl text-black cursor-pointer font-bold"
-                  onClick={() => navigate('/')}
-                >
-                  SLMB
-                </h1>
-                 <p className="text-sm text-black font-medium mt-1">Your trusted legal partner</p>
-                </div>
-                <div className="flex  items-center gap-4">
-                  <div className="flex items-center gap-4">
-                    <img 
-                      src={filter1} 
-                      alt="Filter" 
-                      className="cursor-pointer ml-25 w-7 h-7"
-                      onClick={() => navigate('/filter')}
-                    />
-                    <img 
-                     src={pro1} 
-                      alt="Profile" 
-                      className="cursor-pointer w-7 h-7"
-                      onClick={() => navigate('/user-profile')}
-                    />
+          <div className="flex flex-row items-center">
+            <div className="flex flex-1 flex-col items-start mt-3  mb-3 md:mb-0">
+              <h1
+                className="text-2xl text-black mx-5 cursor-pointer font-bold"
+                onClick={() => navigate('/')}
+              >
+                SLMB
+              </h1>
+              <p className="text-sm text-black font-medium mt-1">Your trusted legal partner</p>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4">
+                <img
+                  src={filter1}
+                  alt="Filter"
+                  className="cursor-pointer ml-25 w-7 h-7"
+                  onClick={() => navigate('/filter')}
+                />
+                <img
+                  src={pro1}
+                  alt="Profile"
+                  className="cursor-pointer w-7 h-7"
+                  onClick={() => navigate('/user-profile')}
+                />
+              </div>
+              {user ? (
+                <div className='relative'>
+                  <button 
+                    className=" p-4  flex items-center justify-between"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  >
+                    <h1 className="text-xl mr-5 text-black cursor-pointer">
+                        {user.first_name}
+                      </h1>
+                    <span className="text-black">▼</span>
+                  </button>
+                  {isMenuOpen && (
+                    <div className='absolute mt-2 w-auto px-2 py-1 rounded-lg bg-white shadow-lg'>
+                      
+                      <button
+                        className="text-xl mr-5 text-black cursor-pointer"
+                        onClick={handleLogout}
+                      >
+                        Logout
+                      </button>
                     </div>
-                     <h1 
-                       className="text-lg text- cursor-pointer"
-                       onClick={() => navigate('/login')}
-                     >
-                     Login
-                    </h1>
+                  )}
                 </div>
-           </div>
+              ) : (
+                <h1
+                  className="text-xl mr-5 text-black cursor-pointer"
+                  onClick={() => navigate('/login')}
+                >
+                  Login
+                </h1>
+              )}
+            </div>
+          </div>
         </header>
       </>
     );
@@ -86,7 +136,7 @@ const Header2 = () => {
         <header className="p-4 w-full bg-transparent">
           <div className="flex flex-row md:flex-row items-center justify-between">
             <div className="flex flex-col items-center md:items-start mb-4 md:mb-0">
-              <h1 
+              <h1
                 className="text-3xl text-black cursor-pointer font-bold"
                 onClick={() => navigate('/')}
               >
@@ -94,25 +144,50 @@ const Header2 = () => {
               </h1>
               <p className="text-md text-black font-medium mt-1">Your trusted legal partner</p>
             </div>
-            <div className="flex items-center  gap-4">
-              <img 
-                src={filter1} 
-                alt="Filter" 
+            <div className="flex items-center gap-4">
+              <img
+                src={filter1}
+                alt="Filter"
                 className="cursor-pointer w-9 h-9"
                 onClick={() => navigate('/filter')}
               />
-              <img 
-                src={pro1} 
-                alt="Profile" 
+              <img
+                src={pro1}
+                alt="Profile"
                 className="cursor-pointer w-9 h-9"
                 onClick={() => navigate('/user-profile')}
               />
-              <h1 
-                className="text-xl text-black cursor-pointer"
-                onClick={() => navigate('/login')}
-              >
-                Login
-              </h1>
+              {user ? (
+                <div className='relative'>
+                  <button 
+                    className=" p-4  flex items-center justify-between"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  >
+                    <h1 className="text-xl mr-5 text-black cursor-pointer">
+                        {user.first_name}
+                      </h1>
+                    <span className="text-black">▼</span>
+                  </button>
+                  {isMenuOpen && (
+                    <div className='absolute mt-2 w-auto px-2 py-1 rounded-lg bg-white shadow-lg'>
+                      
+                      <button
+                        className="text-xl  text-black cursor-pointer"
+                        onClick={handleLogout}
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <h1
+                  className="text-xl mr-5 text-black cursor-pointer"
+                  onClick={() => navigate('/login')}
+                >
+                  Login
+                </h1>
+              )}
             </div>
           </div>
         </header>
@@ -122,35 +197,60 @@ const Header2 = () => {
     return (
       <>
         <header className="p-4 w-full bg-transparent">
-          <div className="flex  flex-col md:flex-row">
+          <div className="flex flex-col md:flex-row">
             <div className="flex flex-1 items-start flex-col mt-5 mb-2 ml-5">
-              <h1 
-                className="text-3xl text-black  cursor-pointer font-bold"
+              <h1
+                className="text-3xl text-black cursor-pointer font-bold"
                 onClick={() => navigate('/')}
               >
                 SLMB
               </h1>
-              <p className="text-xs text-black font-medium ">Your trusted legal partner</p>
+              <p className="text-xs text-black font-medium">Your trusted legal partner</p>
             </div>
             <div className="flex items-center justify-center">
-              <img 
-                src={filter1} 
-                alt="Filter" 
-                className="cursor-pointer w-6 h-6 ml-5 mr-5"
+              <img
+                src={filter1}
+                alt="Filter"
+                className="cursor-pointer w-6 h-6 ml-5 mr-2"
                 onClick={() => navigate('/filter')}
               />
-              <img 
-                src={pro1} 
-                alt="Profile" 
-                className="cursor-pointer w-6 h-6 ml-5"
+              <img
+                src={pro1}
+                alt="Profile"
+                className="cursor-pointer w-6 h-6 ml-2"
                 onClick={() => navigate('/user-profile')}
               />
-              <h1 
-                className="text-xl mr-5 text-black cursor-pointer"
-                onClick={() => navigate('/login')}
-              >
-                Login
-              </h1>
+              {user ? (
+                <div className='relative'>
+                  <button 
+                    className=" p-4  flex items-center justify-between"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  >
+                    <h1 className="text-xl mr-5 text-black cursor-pointer">
+                        {user.first_name}
+                      </h1>
+                    <span className="text-black">▼</span>
+                  </button>
+                  {isMenuOpen && (
+                    <div className='absolute mt-2 w-auto px-2 py-1 rounded-lg bg-white shadow-lg'>
+                      
+                      <button
+                        className="text-xl mr-5 text-black cursor-pointer"
+                        onClick={handleLogout}
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <h1
+                  className="text-xl mr-5 text-black cursor-pointer"
+                  onClick={() => navigate('/login')}
+                >
+                  Login
+                </h1>
+              )}
             </div>
           </div>
         </header>

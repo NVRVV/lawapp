@@ -51,7 +51,7 @@ const Home = () => {
           <Header1 />
           <h2 className="text-2xl text-white text-center mt-4 mb-10">Welcome!</h2>
           <button 
-            className="text-white bg-secondary text-2xl w-56  flex items-center justify-center gap-2 px-4 py-3 mt-6 mx-auto rounded-lg shadow-md hover:text-secondary" // Adjusted for width, height, and hover effect
+            className="text-white bg-secondary button1 text-2xl w-56  flex items-center justify-center gap-2 px-4 py-3 mt-6 mx-auto rounded-lg shadow-md hover:text-secondary" // Adjusted for width, height, and hover effect
             onClick={() => navigate('/filter')}
           >
             Get Started <img src={AR} alt="Arrow" className="w-7 h-7 inline-block" />
@@ -115,7 +115,7 @@ const Home = () => {
           <Header1 />
           <h2 className="text-3xl text-white text-center mt-6">Welcome!</h2>
           <button 
-            className="text-white bg-secondary text-2xl w-56 h-12 flex items-center justify-center gap-2 px-4 py-3 mt-8 mx-auto rounded-lg shadow-md hover:text-secondary" // Adjusted for width, height, and hover effect
+            className="text-white bg-secondary button1 text-2xl w-56 h-12 flex items-center justify-center gap-2 px-4 py-3 mt-8 mx-auto rounded-lg shadow-md hover:text-secondary" // Adjusted for width, height, and hover effect
             onClick={() => navigate('/filter')}
           >
             Get Started <img src={AR} alt="Arrow" className="w-6 h-6 inline-block" />
@@ -184,7 +184,7 @@ const Home = () => {
           <h2 className="text-6xl text-white text-center mt-10">Welcome!</h2>
           <p className='text-white text-xs mx-40 my-3'>Smart Lawyer Management System efficiently matches clients with the most suitable legal experts for their specific cases. It streamlines the process by providing detailed lawyer profiles and case-relevant recommendations with precision and professionalism.</p>
           <button 
-            className="text-white bg-secondary text-l  flex items-center justify-center gap-2 p-2 px-4 mt-12 mx-auto rounded-lg shadow-md" // Adjusted for width, height, and hover effect
+            className="text-white button1 bg-secondary text-l  flex items-center justify-center gap-2 p-2 px-4 mt-12 mx-auto rounded-lg shadow-md" // Adjusted for width, height, and hover effect
             onClick={() => navigate('/filter')}
           >
             Get Started <img src={AR} alt="Arrow" className="w-6 h-6 inline-block" />

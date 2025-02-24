@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import "../index.css";
+// frontend/src/components/Login.jsx
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import '../index.css';
 
 const Login = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [isLawyerSelected, setIsLawyerSelected] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   // State to track the current screen size category
@@ -40,6 +44,20 @@ const Login = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:5000/api/auth/login', {
+        email,
+        password,
+      });
+      localStorage.setItem('token', response.data.token);
+      navigate('/user-profile');
+    } catch (error) {
+      console.error('Login failed', error);
+    }
+  };
+
   // Render different layouts based on screen size using if-else-if
   if (screenSize === 'mobile') {
     return (
@@ -54,7 +72,7 @@ const Login = () => {
         <div className="flex flex-col items-center">
           {/* Left Section */}
           <div className="flex flex-10 text-white h-max  flex-col items-center mt-5">
-            <h1 
+            <h1
               className="text-2xl font-bold cursor-pointer"
               onClick={() => navigate('/')}
             >
@@ -69,8 +87,8 @@ const Login = () => {
               <h1 className="text-2xl font-bold text-center mt-4 mb-4">Login</h1>
               <p className="text-xl text-center mb-4">
                 Want to join us{" "}
-                <span 
-                  className="text-secondary cursor-pointer uderline"
+                <span
+                  className="text-secondary cursor-pointer underline"
                   onClick={() => navigate('/register')}
                 >
                   Create Account
@@ -103,7 +121,7 @@ const Login = () => {
               </div>
 
               {/* Register Form */}
-              <form className="flex flex-col w-full max-w-xs">
+              <form className="flex flex-col w-full max-w-xs" onSubmit={handleLogin}>
                 <div className="flex flex-col mt-5 mb-5">
                   <label
                     htmlFor="email"
@@ -118,6 +136,8 @@ const Login = () => {
                     className="login-input text-lg p-2 pl-3 w-full focus:outline-none rounded-md"
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 </div>
@@ -136,13 +156,15 @@ const Login = () => {
                     className="login-input text-lg p-2 pl-3 w-full focus:outline-none rounded-md"
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     required
                   />
                 </div>
 
-                <button 
+                <button
                   className="login-btn text-lg p-2 mt-10 mb-5 w-full cursor-pointer"
-                  onClick={() => navigate('/user-profile')}
+                  type="submit"
                 >
                   Login
                 </button>
@@ -165,7 +187,7 @@ const Login = () => {
         <div className="w-full">
           {/* Left Section */}
           <div className=" login justify-center pt-10 pb-10 text-black h-max items-center  ">
-            <h1 
+            <h1
               className="text-6xl font-bold cursor-pointer"
               onClick={() => navigate('/')}
             >
@@ -180,7 +202,7 @@ const Login = () => {
               <h1 className="text-4xl font-bold text-center mb-6">Login</h1>
               <p className="text-2xl text-center mb-6">
                 Want to join us{" "}
-                <span 
+                <span
                   className="text-secondary cursor-pointer underline"
                   onClick={() => navigate('/register')}
                 >
@@ -214,8 +236,7 @@ const Login = () => {
               </div>
 
               {/* Register Form */}
-              <form className="flex flex-col w-full">
-
+              <form className="flex flex-col w-full" onSubmit={handleLogin}>
                 <div className="flex flex-col mb-6">
                   <label
                     htmlFor="email"
@@ -230,6 +251,8 @@ const Login = () => {
                     className="login-input text-xl p-2 pl-4 w-full focus:outline-none rounded-md"
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 </div>
@@ -248,12 +271,14 @@ const Login = () => {
                     className="login-input text-xl p-2 pl-4 w-full focus:outline-none rounded-md"
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     required
                   />
                 </div>
-                <button 
+                <button
                   className="login-btn  text-xl mt-10 mb-5 p-2 w-full  cursor-pointer"
-                  onClick={() => navigate('/lawyer-form')}
+                  type="submit"
                 >
                   Login
                 </button>
@@ -278,7 +303,7 @@ const Login = () => {
         >
           {/* Left Section */}
           <div className="flex flex-10 text-white h-max login flex-col ml-10">
-            <h1 
+            <h1
               className="text-5xl mt-5 font-bold cursor-pointer"
               onClick={() => navigate('/')}
             >
@@ -293,8 +318,8 @@ const Login = () => {
               <h1 className="text-4xl ml-35 mr-35 font-bold">Login</h1>
               <p className="text-l ml-15 mr-15 mt-5">
                 Want to Sign Up?{" "}
-                <span 
-                  className="text-secondary cursor-pointer underline" 
+                <span
+                  className="text-secondary cursor-pointer underline"
                   onClick={() => navigate("/register")}
                 >
                   Create Account
@@ -327,7 +352,7 @@ const Login = () => {
               </div>
 
               {/* Login Form */}
-              <form className="flex flex-col">
+              <form className="flex flex-col" onSubmit={handleLogin}>
                 <div className="flex flex-col">
                   <label
                     htmlFor="email"
@@ -342,6 +367,8 @@ const Login = () => {
                     className="login-input p-2 text-xs  pl-5 focus:outline-none"
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 </div>
@@ -360,12 +387,14 @@ const Login = () => {
                     className="login-input p-2 text-xs pl-5 focus:outline-none"
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     required
                   />
                 </div>
-                <button 
+                <button
                   className="login-btn text-l w-50 mx-35 p-2 mt-5 cursor-pointer"
-                  onClick={() => navigate('/user-profile')}
+                  type="submit"
                 >
                   Login
                 </button>

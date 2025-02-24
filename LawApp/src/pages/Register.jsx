@@ -1,10 +1,16 @@
-import React, { useState, useEffect } from "react";
-import "../index.css";
-import { useNavigate } from "react-router-dom";
+// frontend/src/components/Register.jsx
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import '../index.css';
 
 const Register = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [isLawyerSelected, setIsLawyerSelected] = useState(false);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   // State to track the current screen size category
@@ -40,6 +46,22 @@ const Register = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post('http://localhost:5000/api/auth/register', {
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        password,
+        role: isLawyerSelected ? 'lawyer' : 'client',
+      });
+      navigate('/login');
+    } catch (error) {
+      console.error('Registration failed', error);
+    }
+  };
+
   // Render different layouts based on screen size using if-else-if
   if (screenSize === 'mobile') {
     return (
@@ -54,7 +76,7 @@ const Register = () => {
         <div className="flex flex-col items-center">
           {/* Left Section */}
           <div className="flex flex-10 text-white h-max  flex-col items-center mt-5">
-            <h1 
+            <h1
               className="text-2xl font-bold cursor-pointer"
               onClick={() => navigate('/')}
             >
@@ -69,7 +91,7 @@ const Register = () => {
               <h1 className="text-2xl font-bold text-center mt-4 mb-4">Create a Account</h1>
               <p className="text-xl text-center mb-4">
                 Already register?{" "}
-                <span 
+                <span
                   className="text-secondary cursor-pointer underline"
                   onClick={() => navigate('/login')}
                 >
@@ -103,7 +125,7 @@ const Register = () => {
               </div>
 
               {/* Register Form */}
-              <form className="flex flex-col w-full max-w-xs">
+              <form className="flex flex-col w-full max-w-xs" onSubmit={handleRegister}>
                 <div className="flex flex-col mb-4">
                   <label
                     htmlFor="first"
@@ -111,13 +133,15 @@ const Register = () => {
                   >
                     First Name
                   </label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     id="first"
                     placeholder="First Name"
                     className="login-input text-lg p-2 pl-3 w-full focus:outline-none rounded-md"
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
                     required
                   />
                 </div>
@@ -129,13 +153,15 @@ const Register = () => {
                   >
                     Last Name
                   </label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     id="last"
                     placeholder="Last Name"
                     className="login-input text-xl p-2 pl-3 w-full focus:outline-none rounded-md"
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
                     required
                   />
                 </div>
@@ -154,6 +180,8 @@ const Register = () => {
                     className="login-input text-lg p-2 pl-3 w-full focus:outline-none rounded-md"
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 </div>
@@ -172,6 +200,8 @@ const Register = () => {
                     className="login-input text-lg p-2 pl-3 w-full focus:outline-none rounded-md"
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     required
                   />
                 </div>
@@ -188,9 +218,9 @@ const Register = () => {
                   <span className="text-secondary"> Terms & Conditions</span>
                 </p>
 
-                <button 
+                <button
                   className="login-btn text-lg p-2 mb-5 w-full cursor-pointer"
-                  onClick={() => navigate('/lawyer-form')}
+                  type="submit"
                 >
                   Create Account
                 </button>
@@ -213,7 +243,7 @@ const Register = () => {
         <div className="w-full">
           {/* Left Section */}
           <div className=" login justify-center pt-10 pb-10 text-black h-max items-center  ">
-            <h1 
+            <h1
               className="text-6xl font-bold cursor-pointer"
               onClick={() => navigate('/')}
             >
@@ -228,7 +258,7 @@ const Register = () => {
               <h1 className="text-4xl font-bold text-center mb-6">Create a Account</h1>
               <p className="text-2xl text-center mb-6">
                 Already register?{" "}
-                <span 
+                <span
                   className="text-secondary cursor-pointer underline"
                   onClick={() => navigate('/login')}
                 >
@@ -262,7 +292,7 @@ const Register = () => {
               </div>
 
               {/* Register Form */}
-              <form className="flex flex-col w-full">
+              <form className="flex flex-col w-full" onSubmit={handleRegister}>
                 <div className="flex flex-col md:flex-row gap-4 mb-6">
                   <div className="flex flex-col w-full md:w-1/2">
                     <label
@@ -271,13 +301,15 @@ const Register = () => {
                     >
                       First Name
                     </label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       id="first"
                       placeholder="First Name"
                       className="login-input text-xl p-2 pl-4 w-full focus:outline-none rounded-md"
                       onFocus={() => setIsFocused(true)}
                       onBlur={() => setIsFocused(false)}
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
                       required
                     />
                   </div>
@@ -289,13 +321,15 @@ const Register = () => {
                     >
                       Last Name
                     </label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       id="last"
                       placeholder="Last Name"
                       className="login-input text-xl p-2 pl-4 w-full focus:outline-none rounded-md"
                       onFocus={() => setIsFocused(true)}
                       onBlur={() => setIsFocused(false)}
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
                       required
                     />
                   </div>
@@ -315,6 +349,8 @@ const Register = () => {
                     className="login-input text-xl p-2 pl-4 w-full focus:outline-none rounded-md"
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 </div>
@@ -333,6 +369,8 @@ const Register = () => {
                     className="login-input text-xl p-2 pl-4 w-full focus:outline-none rounded-md"
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     required
                   />
                 </div>
@@ -349,9 +387,9 @@ const Register = () => {
                   <span className="text-secondary"> Terms & Conditions</span>
                 </p>
 
-                <button 
+                <button
                   className="login-btn  text-xl p-2 w-full  cursor-pointer"
-                  onClick={() => navigate('/lawyer-form')}
+                  type="submit"
                 >
                   Create Account
                 </button>
@@ -376,7 +414,7 @@ const Register = () => {
         >
           {/* Left Section */}
           <div className="flex flex-10 text-white h-max login flex-col ml-10">
-            <h1 
+            <h1
               className="text-5xl mt-5 font-bold cursor-pointer"
               onClick={() => navigate('/')}
             >
@@ -391,7 +429,7 @@ const Register = () => {
               <h1 className="text-3xl font-bold">Create a Account</h1>
               <p className="text-l  mt-5">
                 Already register?{" "}
-                <span 
+                <span
                   className="text-secondary cursor-pointer underline"
                   onClick={() => navigate('/login')}
                 >
@@ -425,45 +463,48 @@ const Register = () => {
               </div>
 
               {/* Register Form */}
-              <form className="flex flex-col">
+              <form className="flex flex-col" onSubmit={handleRegister}>
                 <div className="flex flex-row mx-10 gap-x-10">
                   <div className="flex flex-col">
-                    <label 
+                    <label
                       htmlFor="first"
                       className={`transition-opacity text-m mt-3 duration-300 ${isFocused ? "opacity-100" : "opacity-0"}`}
                     >
                       First Name
                     </label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       id="first"
                       placeholder="First Name"
                       className="login-input text-xs p-2 mt-2 pl-5 focus:outline-none"
                       onFocus={() => setIsFocused(true)}
                       onBlur={() => setIsFocused(false)}
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
                       required
                     />
                   </div>
                   <div className="flex flex-col">
-                    <label 
+                    <label
                       htmlFor="last"
                       className={`transition-opacity text-m mt-3  duration-300 ${isFocused ? "opacity-100" : "opacity-0"}`}
                     >
                       Last Name
                     </label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       id="last"
                       placeholder="Last Name"
                       className="login-input text-xs p-2 mt-2 pl-5 focus:outline-none"
                       onFocus={() => setIsFocused(true)}
                       onBlur={() => setIsFocused(false)}
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
                       required
                     />
                   </div>
                 </div>
 
-                
                 <div className="flex flex-row mx-10 gap-x-10">
                 <div className="flex flex-col mt-4">
                   <label
@@ -479,6 +520,8 @@ const Register = () => {
                     className="login-input p-2 text-xs w-auto mt-2 pl-5 focus:outline-none"
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 </div>
@@ -496,11 +539,12 @@ const Register = () => {
                     className="login-input text-xs w-auto p-2 mt-2 pl-5 focus:outline-none"
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     required
                   />
                 </div>
                 </div>
-                
 
                 <p className="text-sm mt-2">
                   <input
@@ -514,9 +558,9 @@ const Register = () => {
                   <span className="text-secondary"> Terms & Conditions</span>
                 </p>
 
-                <button 
+                <button
                   className="login-btn text-l w-50 mx-35 mt-3  p-2 cursor-pointer"
-                  onClick={() => navigate('/lawyer-form')}
+                  type="submit"
                 >
                   Create Account
                 </button>
