@@ -88,11 +88,17 @@ const Header2 = () => {
                   onClick={() => navigate('/filter')}
                 />
                 <img
-                  src={pro1}
-                  alt="Profile"
-                  className="cursor-pointer w-7 h-7"
-                  onClick={() => navigate('/user-profile')}
-                />
+               src={pro1}
+                alt="Profile"
+               className="cursor-pointer w-7 h-7"
+               onClick={() => {
+               if (user.role === 'client') {
+                navigate('/user-profile'); // Redirect to form after login for lawyers
+               } else {
+                navigate('/lawyer-dashboard');
+               }
+               }}
+               />
               </div>
               {user ? (
                 <div className='relative'>
@@ -152,11 +158,17 @@ const Header2 = () => {
                 onClick={() => navigate('/filter')}
               />
               <img
-                src={pro1}
+               src={pro1}
                 alt="Profile"
-                className="cursor-pointer w-9 h-9"
-                onClick={() => navigate('/user-profile')}
-              />
+               className="cursor-pointer w-7 h-7"
+               onClick={() => {
+               if (user.role === 'client') {
+                navigate('/user-profile'); // Redirect to form after login for lawyers
+               } else {
+                navigate('/lawyer-dashboard');
+               }
+               }}
+               />
               {user ? (
                 <div className='relative'>
                   <button 
@@ -214,12 +226,19 @@ const Header2 = () => {
                 className="cursor-pointer w-6 h-6 ml-5 mr-2"
                 onClick={() => navigate('/filter')}
               />
+              
               <img
-                src={pro1}
+               src={pro1}
                 alt="Profile"
-                className="cursor-pointer w-6 h-6 ml-2"
-                onClick={() => navigate('/user-profile')}
-              />
+               className="cursor-pointer w-7 h-7"
+               onClick={() => {
+               if (user.role === 'client') {
+                navigate('/user-profile'); // Redirect to form after login for lawyers
+               } else {
+                navigate('/lawyer-dashboard');
+               }
+               }}
+               />
               {user ? (
                 <div className='relative'>
                   <button 
