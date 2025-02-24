@@ -1,40 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
 import "../../index.css";
-import form1 from '../../assets/form1.png';
+import form1 from '../../assets/form1.png'; // Ensure this path is correct
 import Header1 from "../../components/Header1";
 
 const ReviewScreen = ({ uploadedFiles = [], setUploadedFiles = () => {} }) => {
-  const navigate = useNavigate();
+  const fileInputRef = useRef(null);
+  const [screenSize, setScreenSize] = useState('desktop');
 
-  // Function to remove a file by index
-  const handleRemoveFile = (indexToRemove) => {
-    setUploadedFiles(prevFiles => 
-      prevFiles.filter((_, index) => index !== indexToRemove)
-    );
-  };
-
-  const handleUploadMore = () => {
-    navigate("/upload");
-  };
-
-  // Placeholder function for Submit button
-  const handleSubmit = () => {
-    console.log("Submitted files:", uploadedFiles);
-    // Add your submit logic here
-  };
-
-  // State to track the current screen size category
-  const [screenSize, setScreenSize] = useState('desktop'); // Default to desktop
-
-  // Define breakpoints (in pixels)
   const BREAKPOINTS = {
-    mobile: 768,  // Up to 768px for mobile
-    tablet: 1024, // Up to 1024px for tablet
-    desktop: 1024 // Above 1024px for desktop
+    mobile: 768,
+    tablet: 1024,
+    desktop: 1024,
   };
 
-  // Update screen size on mount and when window is resized
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
@@ -46,29 +24,63 @@ const ReviewScreen = ({ uploadedFiles = [], setUploadedFiles = () => {} }) => {
         setScreenSize('desktop');
       }
     };
-
-    // Initial check
     handleResize();
-
-    // Add event listener for resize
     window.addEventListener('resize', handleResize);
-
-    // Cleanup event listener on unmount
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Render different layouts based on screen size using if-else-if
+  const handleRemoveFile = (indexToRemove) => {
+    setUploadedFiles(prevFiles => 
+      prevFiles.filter((_, index) => index !== indexToRemove)
+    );
+  };
+
+  const handleUploadClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileChange = (e) => {
+    const newFiles = Array.from(e.target.files)
+      .filter(file => file.type === "application/pdf") // Only accept PDF files
+      .map(file => ({
+        name: file.name,
+        size: `${(file.size / 1024).toFixed(2)} KB`,
+        date: new Date().toLocaleTimeString(),
+      }));
+    if (newFiles.length < e.target.files.length) {
+      alert("Only PDF files are accepted. Non-PDF files were ignored.");
+    }
+    setUploadedFiles(prevFiles => [...prevFiles, ...newFiles]);
+    e.target.value = null; // Reset input
+  };
+
+  const handleSubmit = () => {
+    console.log("Submitted files:", uploadedFiles);
+    // Add your submit logic here
+  };
+
+  const fileInput = (
+    <input
+      type="file"
+      ref={fileInputRef}
+      onChange={handleFileChange}
+      multiple
+      accept="application/pdf" // Restrict to PDF files in file picker
+      className="hidden"
+    />
+  );
+
   if (screenSize === 'mobile') {
     return (
-      <section className="w-full bg-cover bg-center" style={{ backgroundImage: `url(${form1})` }}>
-        <div
-          className="flex flex-col items-center justify-center h-220 w-full "
-        >
+      <section className="w-full bg-cover bg-center " style={{ backgroundImage: `url(${form1})` }}>
+      
+        {fileInput}
+        <div className="flex flex-col items-center justify-center h-220 w-full">
           <div className="bg-bg/70 flex flex-col w-auto px-7 items-center rounded-xl py-10">
             {uploadedFiles.length > 0 ? (
               <div className="items-center justify-center text-center">
                 <h2 className="text-xl text-secondary mb-4">Uploaded Files</h2>
-                <div className="bg-white rounded-lg shadow-md overflow-x-auto w-full ">
+                <div className="bg-white rounded-lg shadow-md overflow-x-auto w-full">
                   <table className="w-full text-left">
                     <thead>
                       <tr className="bg-gray-100">
@@ -101,7 +113,7 @@ const ReviewScreen = ({ uploadedFiles = [], setUploadedFiles = () => {} }) => {
                 </div>
                 <div className="mt-4 flex flex-col gap-4 justify-center">
                   <button
-                    onClick={handleUploadMore}
+                    onClick={handleUploadClick}
                     className="w-full h-[41px] bg-secondary text-white text-lg rounded-md hover:shadow-xl cursor-pointer"
                   >
                     Upload More
@@ -119,15 +131,15 @@ const ReviewScreen = ({ uploadedFiles = [], setUploadedFiles = () => {} }) => {
                 <p className="text-lg text-gray-600 mb-4">No files uploaded yet</p>
                 <div className="flex flex-col gap-4">
                   <button
-                    onClick={handleUploadMore}
-                    className="w-full h-[41px] bg-secondary text-white text-lg rounded-md hover:shadow-xl cursor-pointer"
+                    onClick={handleUploadClick}
+                    className="w-full h-auto bg-secondary text-white text-2xl rounded-md hover:shadow-xl cursor-pointer px-5 py-2"
                   >
                     Upload
                   </button>
                   <button
                     onClick={handleSubmit}
                     disabled={uploadedFiles.length === 0}
-                    className={`w-full h-[41px] text-white text-lg rounded-md hover:shadow-xl cursor-pointer ${
+                    className={`w-full h-auto text-white text-2xl rounded-md hover:shadow-xl cursor-pointer px-5 py-2 ${
                       uploadedFiles.length === 0 ? 'bg-gray-400' : 'bg-secondary'
                     }`}
                   >
@@ -142,13 +154,13 @@ const ReviewScreen = ({ uploadedFiles = [], setUploadedFiles = () => {} }) => {
     );
   } else if (screenSize === 'tablet') {
     return (
-      <section className="bg-cover bg-center" style={{ backgroundImage: `url(${form1})` }}>
-        <div
-          className="flex flex-col items-center justify-center h-220 pt-10"
-        >
+      <section className=" bg-cover bg-center " style={{ backgroundImage: `url(${form1})` }}>
+        
+        {fileInput}
+        <div className="flex flex-col items-center justify-center h-220 pt-10">
           <div className="bg-bg/70 flex flex-col w-auto md:flex-col items-center rounded-xl p-10">
             {uploadedFiles.length > 0 ? (
-              <div className="items-center  justify-center text-center">
+              <div className="items-center justify-center text-center">
                 <h2 className="text-xl text-secondary mb-6">Uploaded Files</h2>
                 <div className="bg-white rounded-lg shadow-md overflow-x-auto w-full max-w-md">
                   <table className="w-full text-left">
@@ -183,7 +195,7 @@ const ReviewScreen = ({ uploadedFiles = [], setUploadedFiles = () => {} }) => {
                 </div>
                 <div className="mt-6 flex flex-col md:flex-row gap-4 justify-center">
                   <button
-                    onClick={handleUploadMore}
+                    onClick={handleUploadClick}
                     className="w-full md:w-[221px] h-[41px] bg-secondary text-white text-xl rounded-md hover:shadow-xl cursor-pointer"
                   >
                     Upload More
@@ -201,7 +213,7 @@ const ReviewScreen = ({ uploadedFiles = [], setUploadedFiles = () => {} }) => {
                 <p className="text-xl text-gray-600 mb-6">No files uploaded yet</p>
                 <div className="flex flex-col md:flex-row gap-4">
                   <button
-                    onClick={handleUploadMore}
+                    onClick={handleUploadClick}
                     className="w-full md:w-[221px] h-[41px] bg-secondary text-white text-xl rounded-md hover:shadow-xl cursor-pointer"
                   >
                     Upload
@@ -224,10 +236,10 @@ const ReviewScreen = ({ uploadedFiles = [], setUploadedFiles = () => {} }) => {
     );
   } else { // desktop
     return (
-      <section style={{ backgroundImage: `url(${form1})` }}>
-        <div
-          className="flex flex-col items-center justify-center h-173 w-full bg-cover bg-center pt-20"
-        >
+      <section style={{ backgroundImage: `url(${form1})` }} className=' h-screen w-full bg-cover bg-center'>
+        
+        {fileInput}
+        <div className="flex flex-col items-center justify-center pt-20">
           <div className="screens2 flex-row md:flex-col ml-100 mr-100 rounded-lg items-center justify-center">
             {uploadedFiles.length > 0 ? (
               <div className="justify-center items-center">
@@ -265,7 +277,7 @@ const ReviewScreen = ({ uploadedFiles = [], setUploadedFiles = () => {} }) => {
                 </div>
                 <div className="mt-4 flex flex-col md:flex-row gap-4 justify-center">
                   <button
-                    onClick={handleUploadMore}
+                    onClick={handleUploadClick}
                     className="w-[221px] h-[41px] bg-secondary text-white text-xl rounded-sm hover:shadow-xl cursor-pointer"
                   >
                     Upload More
@@ -283,7 +295,7 @@ const ReviewScreen = ({ uploadedFiles = [], setUploadedFiles = () => {} }) => {
                 <p className="text-xl text-gray-600 mb-4">No files uploaded yet</p>
                 <div className="flex flex-col md:flex-row gap-4">
                   <button
-                    onClick={handleUploadMore}
+                    onClick={handleUploadClick}
                     className="w-[221px] h-[41px] bg-secondary text-white text-xl rounded-sm hover:shadow-xl cursor-pointer"
                   >
                     Upload
