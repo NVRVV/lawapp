@@ -70,7 +70,7 @@ const Login = () => {
               <p className="text-xl text-center mb-4">
                 Want to join us{" "}
                 <span 
-                  className="text-secondary cursor-pointer"
+                  className="text-secondary cursor-pointer uderline"
                   onClick={() => navigate('/register')}
                 >
                   Create Account
@@ -181,7 +181,7 @@ const Login = () => {
               <p className="text-2xl text-center mb-6">
                 Want to join us{" "}
                 <span 
-                  className="text-secondary cursor-pointer"
+                  className="text-secondary cursor-pointer underline"
                   onClick={() => navigate('/register')}
                 >
                   Create Account
@@ -294,7 +294,7 @@ const Login = () => {
               <p className="text-l ml-15 mr-15 mt-5">
                 Want to Sign Up?{" "}
                 <span 
-                  className="text-secondary cursor-pointer" 
+                  className="text-secondary cursor-pointer underline" 
                   onClick={() => navigate("/register")}
                 >
                   Create Account

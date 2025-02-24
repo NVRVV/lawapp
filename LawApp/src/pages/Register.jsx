@@ -68,9 +68,9 @@ const Register = () => {
             <div className="flex flex-col w-full items-center">
               <h1 className="text-2xl font-bold text-center mt-4 mb-4">Create a Account</h1>
               <p className="text-xl text-center mb-4">
-                Already register{" "}
+                Already register?{" "}
                 <span 
-                  className="text-secondary cursor-pointer"
+                  className="text-secondary cursor-pointer underline"
                   onClick={() => navigate('/login')}
                 >
                   Login
@@ -227,9 +227,9 @@ const Register = () => {
             <div className="flex flex-col bg-bg p-5 items-center mt-10 mb-10 w-full max-w-md">
               <h1 className="text-4xl font-bold text-center mb-6">Create a Account</h1>
               <p className="text-2xl text-center mb-6">
-                Already register{" "}
+                Already register?{" "}
                 <span 
-                  className="text-secondary cursor-pointer"
+                  className="text-secondary cursor-pointer underline"
                   onClick={() => navigate('/login')}
                 >
                   Login
@@ -390,9 +390,9 @@ const Register = () => {
             <div className="flex-col ml-15 mr-15">
               <h1 className="text-3xl font-bold">Create a Account</h1>
               <p className="text-l  mt-5">
-                Already register{" "}
+                Already register?{" "}
                 <span 
-                  className="text-secondary cursor-pointer"
+                  className="text-secondary cursor-pointer underline"
                   onClick={() => navigate('/login')}
                 >
                   Login
