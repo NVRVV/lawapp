@@ -504,7 +504,7 @@ const Register = () => {
 
                 <p className="text-sm mt-2">
                   <input
-                    className="mr-2 cursor-pointer"
+                    className="mr-2 cursor-pointer "
                     type="checkbox"
                     name="terms"
                     id="terms"
