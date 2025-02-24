@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header2 from '../../components/Header2';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 // Add this CSS for the glass effect in your Tailwind config or a separate CSS file
 const styles = `
@@ -17,7 +18,7 @@ const LawyerDash = () => {
   const [screenSize, setScreenSize] = useState('desktop');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
-  // State for appointments and previous clients
+  // State for appointments, previous clients, and lawyer stats
   const [appointments, setAppointments] = useState([
     { id: 1, clientName: "Bhanu", caseType: "Land dispute", date: "2025-02-15T02:00", status: "Ongoing" },
     { id: 2, clientName: "Arun Teja", caseType: "Divorce", date: "2025-02-15T16:00", status: "Ongoing" },
@@ -28,20 +29,45 @@ const LawyerDash = () => {
     { clientName: "Arun Teja", caseType: "Divorce", outcome: "Win" },
     { clientName: "Sandeep", caseType: "Criminal case", outcome: "Settled" },
   ]);
+  const [lawyerStats, setLawyerStats] = useState({ totalCases: 0, closedCases: 0 });
   const [showOutcomePopup, setShowOutcomePopup] = useState(null);
   const [selectedOutcome, setSelectedOutcome] = useState(null);
 
-  // Derived counts
+  // Derived counts (for Pending Cases, we'll still use appointments for now)
   const pendingCasesCount = appointments.filter(app => app.status === "Pending" || app.status === "Ongoing").length;
-  const closedCasesCount = previousClients.length;
+  const closedCasesCount = lawyerStats.closedCases; // From backend
+  const totalCasesCount = lawyerStats.totalCases;   // From backend
 
   const BREAKPOINTS = {
     mobile: 768,
     tablet: 1024,
-    desktop: 1024
+    desktop: 1024,
+  };
+
+  // Fetch lawyer stats from backend
+  const fetchLawyerStats = async () => {
+    try {
+      const token = localStorage.getItem('token'); // Assuming token is stored in localStorage after login
+      const response = await axios.get('http://localhost:5000/api/lawyer-stats', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setLawyerStats({
+        totalCases: response.data.cases_taken || 0,
+        closedCases: response.data.cases_won || 0,
+      });
+    } catch (error) {
+      console.error('Error fetching lawyer stats:', error);
+    }
   };
 
   useEffect(() => {
+    // Initial fetch
+    fetchLawyerStats();
+
+    // Polling every 10 seconds for real-time updates
+    const interval = setInterval(fetchLawyerStats, 10000);
+
+    // Handle screen resize
     const handleResize = () => {
       const width = window.innerWidth;
       if (width <= BREAKPOINTS.mobile) {
@@ -55,7 +81,12 @@ const LawyerDash = () => {
 
     handleResize();
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+
+    // Cleanup
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   const handleDateChange = (id, newDate) => {
@@ -82,7 +113,7 @@ const LawyerDash = () => {
       setPreviousClients([...previousClients, {
         clientName: completedApp.clientName,
         caseType: completedApp.caseType,
-        outcome: selectedOutcome
+        outcome: selectedOutcome,
       }]);
       setShowOutcomePopup(null);
       setSelectedOutcome(null);
@@ -92,8 +123,8 @@ const LawyerDash = () => {
   const renderHeaderStats = (textSize) => (
     <div className="flex justify-around mb-6">
       <div className="bg-white/80 backdrop-blur-md rounded-lg p-4 shadow-lg glass-effect">
-        <p className={`text-${textSize} text-gray-600`}>Today New Appointments</p>
-        <p className={`text-${textSize === 'lg' ? '2xl' : 'xl'} font-bold`}>5</p>
+        <p className={`text-${textSize} text-gray-600`}>Total Cases</p>
+        <p className={`text-${textSize === 'lg' ? '2xl' : 'xl'} font-bold`}>{totalCasesCount}</p>
       </div>
       <div className="bg-white/80 backdrop-blur-md rounded-lg p-4 shadow-lg glass-effect">
         <p className={`text-${textSize} text-gray-600`}>Pending Cases</p>

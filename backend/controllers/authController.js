@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { createUser, findUserByEmail, createLawyerForm } = require('../models/userModel');
+const { createUser, findUserByEmail, createLawyerForm,  } = require('../models/userModel');
 require('dotenv').config();
 
 const register = async (req, res) => {
@@ -80,4 +80,29 @@ const submitLawyerForm = async (req, res) => {
 };
 
 
-module.exports = { register, login, submitLawyerForm, authenticateToken };
+const getLawyerStatsController = async (req, res) => {
+  try {
+    console.log('Fetching lawyer stats for user:', req.user);
+    if (!req.user || req.user.role !== 'lawyer') {
+      return res.status(403).json({ error: 'Unauthorized: Only lawyers can access this data' });
+    }
+
+    const member_id = req.user.userId;
+    const stats = await getLawyerStats(member_id);
+
+    if (!stats) {
+      return res.status(404).json({ error: 'No lawyer form data found' });
+    }
+
+    res.json({
+      cases_taken: stats.cases_taken,
+      cases_won: stats.cases_won,
+    });
+  } catch (error) {
+    console.error('Error fetching lawyer stats:', error);
+    res.status(500).json({ error: 'Failed to fetch lawyer stats' });
+  }
+};
+
+
+module.exports = { register, login, submitLawyerForm, authenticateToken, getLawyerStatsController };

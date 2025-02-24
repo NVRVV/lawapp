@@ -161,6 +161,11 @@ const Settings = () => {
     return (
       <section className="bg-bg2">
         <Header2 />
+        <div className='w-full flex items-end justify-end ' onClick={() => navigate('/lawyer-form')}>
+          <button className='bg-secondary text-white cursor-pointer px-5 mr-5 '>
+            fill form
+          </button>
+        </div>
         <div className="min-h-screen flex-col items-center bg-cover bg-center">
           <button
             className="bg-white/80 backdrop-blur-md p-4 w-xs rounded-lg mt-10 ml-5 mr-5 shadow-lg glass-effect flex items-center justify-between"
@@ -211,6 +216,11 @@ const Settings = () => {
     return (
       <section className="bg-bg2">
         <Header2 />
+        <div className='w-full flex items-end justify-end ' onClick={() => navigate('/lawyer-form')}>
+          <button className='bg-secondary text-white cursor-pointer px-5 mr-5 '>
+            fill form
+          </button>
+        </div>
         <div className="min-h-screen flex-col items-center bg-cover bg-center">
           <button
             className="bg-white/70 backdrop-blur-md p-4 rounded-lg mt-10 ml-10 mr-5 shadow-lg glass-effect flex items-center justify-between"
@@ -261,6 +271,11 @@ const Settings = () => {
     return (
       <section className="bg-bg2">
         <Header2 />
+        <div className='w-full flex items-end justify-end ' onClick={() => navigate('/lawyer-form')}>
+          <button className='bg-secondary text-white cursor-pointer px-5 mr-5 '>
+            fill form
+          </button>
+        </div>
         <div className="max-h-screen flex">
           <div className="w-80 bg-white/80 text-black ml-15 h-80 mt-10 px-4 py-10 rounded-lg shadow-lg glass-effect">
             <h2 className="text-2xl font-bold ml-2 mb-10">SLMB</h2>

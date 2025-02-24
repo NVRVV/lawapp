@@ -40,11 +40,9 @@ const handleRegister = async (e) => {
       role: isLawyerSelected ? 'lawyer' : 'client',
     });
     // Navigate based on role after successful registration
-    if (isLawyerSelected) {
-      navigate('/lawyer-form');
-    } else {
-      navigate('/user-profile');
-    }
+    
+      navigate('/login');
+
   } catch (error) {
     console.error('Registration failed', error);
     setError(error.response?.data?.details || 'Registration failed. Please try again.');

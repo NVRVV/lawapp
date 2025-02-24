@@ -81,7 +81,7 @@ const LawyerForm = () => {
           <div className="mt-5">
             <label htmlFor="experience" className="text-2xl">Experience</label>
             <input
-              type="number"
+              type="tel"
               id="experience"
               placeholder="Enter your experience in years"
               className="p-2 mt-2 pl-5 text-xl focus:outline-none border border-gray-300 rounded-md w-full"
@@ -105,20 +105,27 @@ const LawyerForm = () => {
           </div>
           <div className="mt-5">
             <label htmlFor="district" className="text-2xl">District</label>
-            <input
-              type="text"
+            <select
               id="district"
-              placeholder="Enter your District"
               className="p-2 mt-2 pl-5 text-xl focus:outline-none border border-gray-300 rounded-md w-full"
               value={district}
               onChange={handleDistrictChange}
               required
-            />
+            >
+              <option value="" disabled>Select your District</option>
+              {[
+                "Anakapalli", "Ananthapuramu", "Annamayya", "Bapatla", "Chittoor", "Dr. B.R. Ambedkar Konaseema", "East Godavari",
+                "Eluru", "Guntur", "Kakinada", "Krishna", "Kurnool", "Nandyal", "NTR", "Palnadu", "Parvathipuram Manyam", "Prakasam",
+                "Srikakulam", "Sri Potti Sriramulu Nellore", "Tirupati", "Visakhapatnam", "Vizianagaram", "West Godavari", "YSR Kadapa"
+              ].map((dist) => (
+                <option key={dist} value={dist}>{dist}</option>
+              ))}
+            </select>
           </div>
           <div className="mt-5">
             <label htmlFor="cases-taken" className="text-2xl">Number of Cases Taken</label>
             <input
-              type="number"
+              type="tel"
               id="cases-taken"
               placeholder="Enter no of cases taken"
               className="p-2 mt-2 pl-5 text-xl focus:outline-none border border-gray-300 rounded-md w-full"
@@ -131,7 +138,7 @@ const LawyerForm = () => {
           <div className="mt-5">
             <label htmlFor="cases-won" className="text-2xl">Number of Cases Won</label>
             <input
-              type="number"
+              type="tel"
               id="cases-won"
               placeholder="Enter no of cases won"
               className="p-2 mt-2 pl-5 text-xl focus:outline-none border border-gray-300 rounded-md w-full"
@@ -144,7 +151,7 @@ const LawyerForm = () => {
           <div className="mt-5">
             <label htmlFor="rating" className="text-2xl">Rating</label>
             <input
-              type="number"
+              type="tel"
               id="rating"
               placeholder="Enter rating"
               className="p-2 mt-2 pl-5 text-xl focus:outline-none border border-gray-300 rounded-md w-full"
@@ -154,20 +161,6 @@ const LawyerForm = () => {
               max="5"
               step="0.1"
               required
-            />
-          </div>
-          <div className="mt-5">
-            <label htmlFor="success-rate" className="text-2xl">Success Rate (Optional)</label>
-            <input
-              type="number"
-              id="success-rate"
-              placeholder="Enter success rate (%)"
-              className="p-2 mt-2 pl-5 text-xl focus:outline-none border border-gray-300 rounded-md w-full"
-              value={successRate}
-              onChange={(e) => setSuccessRate(e.target.value)}
-              min="0"
-              max="100"
-              step="0.01"
             />
           </div>
           <div className="flex flex-col md:flex-row justify-between items-center mt-10 gap-5">

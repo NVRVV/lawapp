@@ -27,5 +27,12 @@ const createLawyerForm = async (member_id, formData) => {
   );
   return result;
 };
+const getLawyerStats = async (member_id) => {
+  const [rows] = await db.execute(
+    'SELECT cases_taken, cases_won FROM lawyerform WHERE member_id = ?',
+    [member_id]
+  );
+  return rows[0]; // Return the first row (assuming one lawyerform per member_id)
+};
 
-module.exports = { createUser, findUserByEmail, createLawyerForm };
+module.exports = { createUser, findUserByEmail, createLawyerForm, getLawyerStats };
