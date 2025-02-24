@@ -28,7 +28,7 @@ const LawyerForm2 = () => {
       await axios.post('http://localhost:5000/api/auth/submit-lawyer-form', formData);
       navigate('/lawyer-dashboard');
     } catch (error) {
-      console.error('Form submission failed', error);
+      console.error( error);
     }
   };
 

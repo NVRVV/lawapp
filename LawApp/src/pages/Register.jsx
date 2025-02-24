@@ -62,9 +62,9 @@ const Register = () => {
 
       // Navigate based on the selected role
       if (isLawyerSelected) {
-        navigate('/lawyer-form', { state: { member_id, firstName, lastName } });
+        navigate('/login', { state: { member_id, firstName, lastName } });
       } else {
-        navigate('/user-profile');
+        navigate('/login');
       }
     } catch (error) {
       console.error('Registration failed', error);

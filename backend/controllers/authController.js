@@ -36,7 +36,8 @@ const submitLawyerForm = async (req, res) => {
     await createLawyerForm(formData);
     res.status(201).json({ message: 'Lawyer form submitted successfully' });
   } catch (error) {
-    res.status(500).json({ error: 'Form submission failed' });
+    console.log(error);
+    //res.status(500).json({ error: 'Form submission failed' });
   }
 };
 
