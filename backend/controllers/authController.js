@@ -49,11 +49,17 @@ const authenticateToken = (req, res, next) => {
 const submitLawyerForm = async (req, res) => {
   try {
     const { username, enrollment_id, district_location, experience, cases_taken, cases_won, rating, success_rate } = req.body;
-    const member_id = req.user.userId; // Extracted from JWT
+    
+    if (!req.user) {
+      return res.status(401).json({ error: 'Unauthorized: No user information found' });
+    }
 
     if (req.user.role !== 'lawyer') {
       return res.status(403).json({ error: 'Only lawyers can submit this form' });
     }
+
+    const member_id = req.user.userId; // Ensure this exists
+    console.log('Submitting form for user:', req.user);
 
     await createLawyerForm(member_id, {
       username,
@@ -65,11 +71,13 @@ const submitLawyerForm = async (req, res) => {
       rating,
       success_rate,
     });
+
     res.status(201).json({ message: 'Lawyer form submitted successfully' });
   } catch (error) {
-    console.log(error);
+    console.error('Form submission error:', error);
     res.status(500).json({ error: 'Form submission failed' });
   }
 };
+
 
 module.exports = { register, login, submitLawyerForm, authenticateToken };

@@ -27,6 +27,12 @@ const LawyerForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
+  
+    if (!token) {
+      console.error('No authentication token found');
+      return;
+    }
+  
     const formData = {
       username,
       enrollment_id: enrollmentNumber,
@@ -37,16 +43,23 @@ const LawyerForm = () => {
       rating: parseFloat(rating),
       success_rate: successRate ? parseFloat(successRate) : null,
     };
-
+  
     try {
-      await axios.post('http://localhost:5000/api/auth/submit-lawyer-form', formData, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axios.post(
+        'http://localhost:5000/api/auth/submit-lawyer-form',
+        formData,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+  
+      console.log('Form submitted successfully:', response.data);
       navigate('/lawyer-dashboard');
     } catch (error) {
-      console.error('Form submission failed', error);
+      console.error('Form submission failed:', error.response?.data || error.message);
     }
   };
+  
 
   return (
     <section className="bg-bg2 min-h-screen flex flex-col items-center px-5 md:px-10 lg:px-20">
