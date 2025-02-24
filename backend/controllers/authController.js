@@ -1,7 +1,7 @@
 // backend/controllers/authController.js
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { createUser, findUserByEmail } = require('../models/userModel');
+const { createUser, findUserByEmail, createLawyerForm } = require('../models/userModel');
 require('dotenv').config();
 
 const register = async (req, res) => {
@@ -20,7 +20,6 @@ const login = async (req, res) => {
     const { email, password } = req.body;
     const user = await findUserByEmail(email);
     if (user && (await bcrypt.compare(password, user.password))) {
-      // Generate the token with the first_name included in the payload
       const token = jwt.sign({ userId: user.id, first_name: user.first_name, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
       res.json({ token, first_name: user.first_name });
     } else {
@@ -31,4 +30,14 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login };
+const submitLawyerForm = async (req, res) => {
+  try {
+    const formData = req.body;
+    await createLawyerForm(formData);
+    res.status(201).json({ message: 'Lawyer form submitted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Form submission failed' });
+  }
+};
+
+module.exports = { register, login, submitLawyerForm };

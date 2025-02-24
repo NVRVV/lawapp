@@ -1,4 +1,3 @@
-// frontend/src/components/Register.jsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -11,6 +10,7 @@ const Register = () => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   // State to track the current screen size category
@@ -49,19 +49,29 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/auth/register', {
+      const response = await axios.post('http://localhost:5000/api/auth/register', {
         first_name: firstName,
         last_name: lastName,
         email,
         password,
         role: isLawyerSelected ? 'lawyer' : 'client',
       });
-      navigate('/login');
+
+      // Assuming the response contains the member_id
+      const member_id = response.data.member_id;
+
+      // Navigate based on the selected role
+      if (isLawyerSelected) {
+        navigate('/lawyer-form', { state: { member_id, firstName, lastName } });
+      } else {
+        navigate('/user-profile');
+      }
     } catch (error) {
       console.error('Registration failed', error);
+      setError('Registration failed. Please try again.');
     }
   };
-
+  
   // Render different layouts based on screen size using if-else-if
   if (screenSize === 'mobile') {
     return (
@@ -217,6 +227,8 @@ const Register = () => {
                   I agree to the
                   <span className="text-secondary"> Terms & Conditions</span>
                 </p>
+
+                {error && <p className="text-red-500">{error}</p>}
 
                 <button
                   className="login-btn text-lg p-2 mb-5 w-full cursor-pointer"
@@ -386,6 +398,8 @@ const Register = () => {
                   I agree to the
                   <span className="text-secondary"> Terms & Conditions</span>
                 </p>
+
+                {error && <p className="text-red-500">{error}</p>}
 
                 <button
                   className="login-btn  text-xl p-2 w-full  cursor-pointer"
@@ -557,6 +571,8 @@ const Register = () => {
                   I agree to the
                   <span className="text-secondary"> Terms & Conditions</span>
                 </p>
+
+                {error && <p className="text-red-500">{error}</p>}
 
                 <button
                   className="login-btn text-l w-50 mx-35 mt-3  p-2 cursor-pointer"

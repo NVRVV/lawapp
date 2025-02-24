@@ -52,7 +52,11 @@ const Login = () => {
         password,
       });
       localStorage.setItem('token', response.data.token);
-      navigate('/user-profile');
+      if (isLawyerSelected) {
+        navigate('/lawyer-dashboard');
+      } else {
+        navigate('/user-profile');
+      }
     } catch (error) {
       console.error('Login failed', error);
     }
@@ -165,6 +169,7 @@ const Login = () => {
                 <button
                   className="login-btn text-lg p-2 mt-10 mb-5 w-full cursor-pointer"
                   type="submit"
+                  on
                 >
                   Login
                 </button>

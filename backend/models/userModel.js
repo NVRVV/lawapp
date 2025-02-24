@@ -15,4 +15,13 @@ const findUserByEmail = async (email) => {
   return rows[0];
 };
 
-module.exports = { createUser, findUserByEmail };
+const createLawyerForm = async (formData) => {
+  const { member_id, username, enrollment_id, district_location, experience, cases_taken, cases_won, rating } = formData;
+  const [result] = await db.execute(
+    'INSERT INTO lawyer_forms (member_id, username, enrollment_id, district_location, experience, cases_taken, cases_won, rating) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+    [member_id, username, enrollment_id, district_location, experience, cases_taken, cases_won, rating]
+  );
+  return result;
+};
+
+module.exports = { createUser, findUserByEmail, createLawyerForm };
