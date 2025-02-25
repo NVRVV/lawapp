@@ -81,24 +81,44 @@ const Header2 = () => {
             </div>
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-4">
+              {user ? (
                 <img
-                  src={filter1}
-                  alt="Filter"
-                  className="cursor-pointer ml-25 w-7 h-7"
-                  onClick={() => navigate('/filter')}
+                src={filter1}
+                alt="Filter"
+                className={user.role === 'client' ? "cursor-pointer w-6 h-6 ml-5 mr-2" : "hidden"}
+                onClick={() => {
+                if (user.role === 'client') {
+                navigate('/filter');
+                }
+                }}
                 />
+                ) : (
                 <img
-                  src={pro1}
-                  alt="Profile"
-                  className="cursor-pointer w-7 h-7"
-                  onClick={() => {
-                    if (user.role === 'client') {
-                      navigate('/user-profile'); // Redirect to form after login for lawyers
-                    } else {
-                      navigate('/lawyer-dashboard');
-                    }
-                  }}
+                src={filter1}
+                alt="Filter"
+                className="hidden"
                 />
+                )}
+                {user ? (
+                <img
+                src={pro1}
+                alt="Profile"
+                className="cursor-pointer w-7 h-7"
+                onClick={() => {
+                  if (user.role === 'client') {
+                navigate('/user-profile'); // Redirect to form after login for lawyers
+                } else {
+                 navigate('/lawyer-dashboard');
+                }
+                }}
+                />
+                ) : (
+                <img
+                src={pro1}
+                alt="Profile"
+                className="cursor-pointer w-7 h-7 hidden"
+                />
+                )}
               </div>
               {user ? (
                 <div className='relative'>
@@ -151,24 +171,40 @@ const Header2 = () => {
               <p className="text-md text-white font-medium mt-1">Your trusted legal partner</p>
             </div>
             <div className="flex items-center gap-4">
-              <img
+            {user ? (
+                <img
                 src={filter1}
                 alt="Filter"
-                className="cursor-pointer w-9 h-9"
-                onClick={() => navigate('/filter')}
+                className="cursor-pointer w-6 h-6 ml-5 mr-2"
+                onClick={() => { if (user.role === 'client')navigate('/filter')}}
               />
-              <img
-                  src={pro1}
-                  alt="Profile"
-                  className="cursor-pointer w-7 h-7"
-                  onClick={() => {
-                    if (user.role === 'client') {
-                      navigate('/user-profile'); // Redirect to form after login for lawyers
-                    } else {
-                      navigate('/lawyer-dashboard');
-                    }
-                  }}
+              ) : (
+                <img
+                src={filter1}
+                alt="Filter"
+                className="cursor-pointer w-6 h-6 ml-5 mr-2 hidden"
                 />
+              )}
+              {user ? (
+                <img
+                src={pro1}
+                alt="Profile"
+                className="cursor-pointer w-7 h-7"
+                onClick={() => {
+                  if (user.role === 'client') {
+                navigate('/user-profile'); // Redirect to form after login for lawyers
+                } else {
+                 navigate('/lawyer-dashboard');
+                }
+                }}
+                />
+                ) : (
+                <img
+                src={pro1}
+                alt="Profile"
+                className="cursor-pointer w-7 h-7 hidden"
+                />
+                )}
               {user ? (
                 <div className='relative'>
                   <button 
@@ -220,24 +256,40 @@ const Header2 = () => {
               <p className="text-xs text-white font-medium">Your trusted legal partner</p>
             </div>
             <div className="flex items-center justify-center">
-              <img
+              {user ? (
+                <img
                 src={filter1}
                 alt="Filter"
                 className="cursor-pointer w-6 h-6 ml-5 mr-2"
-                onClick={() => navigate('/filter')}
+                onClick={() => { if (user.role === 'client')navigate('/filter')}}
               />
-              <img
-                  src={pro1}
-                  alt="Profile"
-                  className="cursor-pointer w-7 h-7"
-                  onClick={() => {
-                    if (user.role === 'client') {
-                      navigate('/user-profile'); // Redirect to form after login for lawyers
-                    } else {
-                      navigate('/lawyer-dashboard');
-                    }
-                  }}
+              ) : (
+                <img
+                src={filter1}
+                alt="Filter"
+                className="cursor-pointer w-6 h-6 ml-5 mr-2 hidden"
                 />
+              )}
+              {user ? (
+                <img
+                src={pro1}
+                alt="Profile"
+                className="cursor-pointer w-7 h-7"
+                onClick={() => {
+                  if (user.role === 'client') {
+                navigate('/user-profile'); // Redirect to form after login for lawyers
+                } else {
+                 navigate('/lawyer-dashboard');
+                }
+                }}
+                />
+                ) : (
+                <img
+                src={pro1}
+                alt="Profile"
+                className="cursor-pointer w-7 h-7 hidden"
+                />
+                )}
               {user ? (
                 <div className='relative'>
                   <button 
