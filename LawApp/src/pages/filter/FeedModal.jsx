@@ -3,8 +3,12 @@ import { FaBriefcase, FaMapLocationDot, FaUserTie } from "react-icons/fa6";
 import { GiMoneyStack } from "react-icons/gi";
 import { VscGraph } from "react-icons/vsc";
 import star from '../../assets/star.png';
+import { useNavigate } from 'react-router-dom';
 
 const FeedModal = ({ feed, onClose }) => {
+
+  const navigate = useNavigate();
+
   if (!feed) return null;
 
   return (
@@ -27,7 +31,7 @@ const FeedModal = ({ feed, onClose }) => {
         </button>
         <button
           className="mt-6 px-4 cursor-pointer py-2 bg-secondary text-white rounded-md hover:bg-secondary transition-colors"
-        >
+        onClick={() => navigate('/form')}>
           Upload
         </button>
       </div>

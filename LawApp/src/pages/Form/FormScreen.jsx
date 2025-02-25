@@ -33,8 +33,8 @@ const FormScreen = () => {
   }, []);
 
   return (
-    <section className="w-full h-screen bg-cover bg-center flex justify-center items-center p-4" style={{ backgroundImage: `url(${form1})` }}>
-      <div className={`bg-white/80 rounded-xl p-6 w-full ${screenSize === 'mobile' ? 'max-w-xs' : screenSize === 'tablet' ? 'max-w-md' : 'max-w-lg'}`}> 
+    <section className="w-full h-auto bg-cover bg-center flex justify-center items-center p-4" style={{ backgroundImage: `url(${form1})` }}>
+      <div className={`bg-white/80 rounded-xl h-80% w-80% p-6  ${screenSize === 'mobile' ? 'max-w-xs' : screenSize === 'tablet' ? 'max-w-md' : 'max-w-lg'}`}> 
         <h1 className="text-center text-black font-bold text-2xl mb-4">Case Details</h1>
         <div className="flex flex-col gap-4">
           <input type="text" placeholder="Enter the Case Name" className="p-2 border border-gray-300 rounded-md text-lg" />

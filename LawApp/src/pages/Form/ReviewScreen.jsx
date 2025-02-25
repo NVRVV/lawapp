@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "../../index.css";
 import form1 from '../../assets/form1.png'; // Ensure this path is correct
 import Header1 from "../../components/Header1";
+import { Navigate } from "react-router-dom";
 
 const ReviewScreen = ({ uploadedFiles = [], setUploadedFiles = () => {} }) => {
   const fileInputRef = useRef(null);
@@ -304,8 +305,9 @@ const ReviewScreen = ({ uploadedFiles = [], setUploadedFiles = () => {} }) => {
                     onClick={handleSubmit}
                     disabled={uploadedFiles.length === 0}
                     className={`w-[221px] h-[41px] text-white text-xl rounded-sm hover:shadow-xl cursor-pointer ${
-                      uploadedFiles.length === 0 ? 'bg-gray-400' : 'bg-secondary'
+                      uploadedFiles.length === 0 ? 'bg-gray-400' : 'bg-secondary' 
                     }`}
+                    
                   >
                     Submit
                   </button>

@@ -143,7 +143,7 @@ const Popupsection = () => {
       className="flex flex-col h-screen items-center justify-center  w-full bg-cover bg-center"
       style={{ backgroundImage: `url(${pop1})` }}
     >
-      <div className="popup-overlay ml-30 mr-150 flex-row md:flex-col rounded-xl">
+      <div className="popup-overlay  flex-row md:flex-col rounded-xl">
         <h1 className="text-6xl text-white ml-5 mr-50">Free Case Evaluation</h1>
         <div className="flex flex-col md:flex-row gap-20">
             <div className="flex flex-col">
